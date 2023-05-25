@@ -1,0 +1,23 @@
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Room } from 'src/Models/Room';
+import { RoomService } from 'src/Services/room.service';
+
+@Component({
+  selector: 'app-room-details',
+  templateUrl: './room-details.component.html',
+  styleUrls: ['./room-details.component.css']
+})
+export class RoomDetailsComponent {
+
+  room? : Room ;
+  constructor(public RoomService : RoomService, public activatedRoute:ActivatedRoute,private router:Router){
+    this.activatedRoute.params.subscribe(param => {
+      this.room = RoomService.getRoomById(param['id']);
+        console.log(this.room);
+      })
+    }
+    // this.room = RoomService.getRoomById(1);
+    // console.log(this.room);
+  
+}
