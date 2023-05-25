@@ -1,0 +1,75 @@
+
+    <!-- Breadcrumb Section Begin -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2>Our Rooms</h2>
+                        <div class="bt-option">
+                            <a href="./home.html">Home</a>
+                            <span>Rooms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section End -->
+    <section class="room-details-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="room-details-item">
+                        <img src={{room?.ImageURL}} alt="">
+                        <div class="rd-text">
+                            <div class="rd-title">
+                                <h3>{{room?.Resource?.Name}}</h3>
+                                <div class="rdt-right">
+                                    <div class="rating">
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star-half_alt"></i>
+                                    </div>
+                                    <a href="#">Booking Now</a>
+                                </div>
+                            </div>
+                            <h2>159$<span>/Pernight</span></h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Size:</td>
+                                        <td>30 ft</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Capacity:</td>
+                                        <td>Max persion {{room?.Capacity}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Bed:</td>
+                                        <td>{{room?.Bed?.Name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Services:</td>
+                                        <td *ngFor="let service of room?.Services">
+                                            <span>{{service}}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="f-para">{{room?.Description}}
+                                search the various sites of our great land, America.</p>
+                            <p>The two commonly known recreational vehicle classes are the motorized and towable.
+                                Towable rvs are the travel trailers and the fifth wheel. The rv travel trailer or fifth
+                                wheel has the attraction of getting towed by a pickup or a car, thus giving the
+                                adaptability of possessing transportation for you when you are parked at your campsite.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
