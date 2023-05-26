@@ -2335,3 +2335,8 @@ ul, ol {
 		margin-bottom: 10px;
 	}
 }
+
+button:disabled{
+	cursor: not-allowed;
+	opacity: 0.5;
+}

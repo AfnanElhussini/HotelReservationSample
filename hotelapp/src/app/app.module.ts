@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { RoomResourceModule } from './Components/room-resource/room-resource.module';
+import { AccountModule } from './account/account.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,10 @@ import { RoomResourceModule } from './Components/room-resource/room-resource.mod
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    RoomResourceModule
+    RoomResourceModule,
+    AccountModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
