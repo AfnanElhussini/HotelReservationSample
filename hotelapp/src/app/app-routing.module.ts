@@ -19,7 +19,9 @@ const routes: Routes = [
 
   {path:"aboutUs" , component: AboutUsComponent},
   {path :"contactUs" , component : ContactUsComponent},
-  {path :"booking" , component : BookingComponent}
+  {path :"booking" , component : BookingComponent},
+  {path :"checkAvalability" , component : BookingComponent}
+
   //Login route
  
 

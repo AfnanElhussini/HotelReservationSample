@@ -1,24 +1,14 @@
-<div class="breadcrumb-section pb-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb-text">
-                    <h2>Login</h2>
-                    <div class="bt-option">
-                        <a href="/Home">Home</a>
-                        <span>Booking</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <section class="contact-section spad">
     <div class="container">
          <div class="row border shadow p-4">
+            <div class="col-lg-12 text-center">
+                <div class="contact-text">
+                  <h2>Check Form</h2>
+                </div>
+            </div>
             <div class="col-lg-12">
-                <form class="contact-form login-form" [formGroup]="bookingForm" (ngSubmit)="SubmitForm()">
-
+                <form class="contact-form login-form" formGroup="bookingForm" (ngSubmit)="SubmitForm()">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="date-in">Check In:</label>
