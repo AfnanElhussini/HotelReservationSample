@@ -11,13 +11,11 @@ import { RoomService } from 'src/Services/room.service';
 export class RoomDetailsComponent {
 
   room? : Room ;
-  constructor(public RoomService : RoomService, public activatedRoute:ActivatedRoute,private router:Router){
+  constructor(public RoomService : RoomService, public activatedRoute:ActivatedRoute){
     this.activatedRoute.params.subscribe(param => {
       this.room = RoomService.getRoomById(param['id']);
         console.log(this.room);
       })
     }
-    // this.room = RoomService.getRoomById(1);
-    // console.log(this.room);
   
 }
