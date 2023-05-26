@@ -44,12 +44,14 @@
                                         <tr>
                                             <td class="r-o">Services:</td>
                                             <td *ngFor="let service of room.Services">
-                                                <span>{{service}} , </span>
+                                                <span>{{service}},</span>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                <!-- <a  routerLink="/test" class="primary-btn">More Details</a> -->
                                 <a  [routerLink]="'details/'+room.RoomId" class="primary-btn">More Details</a>
+
                             </div>
                         </div>
                     </div>
