@@ -6,6 +6,7 @@ import { LoginComponent } from './account/login/login.component';
 import { RegistrationComponent } from './account/registration/registration.component';
 import { AboutUsComponent } from './shared/components/about-us/about-us.component';
 import { ContactUsComponent } from './shared/components/contact-us/contact-us.component';
+import { BookingComponent } from './account/booking/booking.component';
 
 
 
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
 
   {path:"aboutUs" , component: AboutUsComponent},
-  {path :"contactUs" , component : ContactUsComponent}
+  {path :"contactUs" , component : ContactUsComponent},
+  {path :"booking" , component : BookingComponent}
   //Login route
  
 
