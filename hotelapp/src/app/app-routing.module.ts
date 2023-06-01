@@ -7,14 +7,11 @@ import { RegistrationComponent } from './account/registration/registration.compo
 import { AboutUsComponent } from './shared/components/about-us/about-us.component';
 import { ContactUsComponent } from './shared/components/contact-us/contact-us.component';
 import { BookingComponent } from './account/booking/booking.component';
-
-
+import { AuthgaurdsGuard } from './Gaurds/authgaurds.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: "full", },
   { path: "rooms", loadChildren: () => import("./Components/room-resource/room-resource.module").then(m => m.RoomResourceModule) },  
-  { path: "service", loadChildren: () => import("./Components/service/service.module").then(m => m.ServiceModule) },  
-  { path: "resource", loadChildren: () => import("./Components/resource/resource.module").then(m => m.ResourceModule) },  
  
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },

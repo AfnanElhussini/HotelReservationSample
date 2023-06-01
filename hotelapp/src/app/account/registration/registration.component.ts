@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, createPlatform } from '@angular/core';
 import {
   FormControl,
@@ -8,6 +9,7 @@ import {
 import { User } from 'src/app/Models/user';
 
 import { ConfirmedValidator } from 'src/app/shared/customHooks/confirmed.validator';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registration',
@@ -19,63 +21,96 @@ export class RegistrationComponent implements OnInit {
 
   userRegisterForm: FormGroup;
 
-  checkMatchigPasswords() {
-    return (
-      this.userRegisterForm.value['password'] ===
-      this.userRegisterForm.value['confirmPassword']
-    );
+  registerUserFunc(data: object) {
+    console.log(data);
+    fetch('https://localhost:7158/api/Account/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          alert('Registration Successful');
+        } else if (res.status === 400) {
+          console.log(res);
+        } else {
+          console.warn('Registration Failed: ' + res.status);
+        }
+      })
+      .catch((err) => {
+        console.warn('Registration Failed: ' + err);
+      });
   }
+  // checkMatchigPasswords() {
+  //   return (
+  //     this.userRegisterForm.value['password'] ===
+  //     this.userRegisterForm.value['confirmPassword']
+  //   );
+  // }
 
-  olderThan18 = true;
+  // olderThan18 = true;
 
-  checkBrithDate() {
-    let year = new Date().getFullYear(); //2023
-    let userYear = new Date(
-      this.userRegisterForm.value['birthDate']
-    ).getFullYear(); //2000
-    let age = year - userYear;
-    if (age >= 18) {
-      this.olderThan18 = true;
-    }else{
-      this.olderThan18 = false;
-    }
-    return this.olderThan18;
+  // checkBrithDate() {
+  //   let year = new Date().getFullYear(); //2023
+  //   let userYear = new Date(
+  //     this.userRegisterForm.value['birthDate']
+  //   ).getFullYear(); //2000
+  //   let age = year - userYear;
+  //   if (age >= 18) {
+  //     this.olderThan18 = true;
+  //   }else{
+  //     this.olderThan18 = false;
+  //   }
+  //   return this.olderThan18;
 
-    console.log(age, this.olderThan18, year, userYear);
-  }
-  constructor() {
-
+  //   console.log(age, this.olderThan18, year, userYear);
+  // }
+  constructor(private router: Router) {
     this.userRegisterForm = new FormGroup({
-      fullName: new FormControl('', [
+      firstName: new FormControl('', [
         Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(70),
-        Validators.pattern('^[a-zA-Z ]*$'),
+        // Validators.minLength(10),
+        // Validators.maxLength(70),
+        // Validators.pattern('^[a-zA-Z ]*$'),
       ]),
-      userID: new FormControl('', [
+      lastName: new FormControl('', [
         Validators.required,
-        Validators.minLength(14),
-        Validators.maxLength(14),
-        Validators.pattern('^[0-9]*$'),
+        // Validators.minLength(10),
+        // Validators.maxLength(70),
+        // Validators.pattern('^[a-zA-Z ]*$'),
       ]),
+      userName: new FormControl('', [
+        Validators.required,
+        // Validators.minLength(10),
+        // Validators.maxLength(70),
+        // Validators.pattern('^[a-zA-Z ]*$'),
+      ]),
+      // userID: new FormControl('', [
+      //   Validators.required,
+      //   // Validators.minLength(14),
+      //   // Validators.maxLength(14),
+      //   // Validators.pattern('^[0-9]*$'),
+      // ]),
 
       email: new FormControl('', [Validators.required, Validators.email]),
 
-      mobileNo: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^[0-9]*$'),
-        Validators.minLength(10),
-        Validators.maxLength(10),
-      ]),
+      // mobileNo: new FormControl('', [
+      //   Validators.required,
+      //   Validators.pattern('^[0-9]*$'),
+      //   Validators.minLength(10),
+      //   Validators.maxLength(10),
+      // ]),
 
-      address: new FormControl('', [
-        Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(70),
-        Validators.pattern('^[a-zA-Z ]*$'),
-      ]),
+      // address: new FormControl('', [
+      //   Validators.required,
+      //   Validators.minLength(10),
+      //   Validators.maxLength(70),
+      //   Validators.pattern('^[a-zA-Z ]*$'),
+      // ]),
 
-      birthDate: new FormControl('', [Validators.required ]),
+      // birthDate: new FormControl('', [Validators.required]),
 
       //     const hasNumber = /\d/.test(value);
       //     const hasUpper = /[A-Z]/.test(value);
@@ -90,25 +125,86 @@ export class RegistrationComponent implements OnInit {
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/
         ),
       ]),
-      confirmPassword: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
+      // confirmPassword: new FormControl('', [
+      //   Validators.required,
+      //   Validators.minLength(8),
+      // ]),
     });
   }
   onSubmit() {
-    console.log(this.userRegisterForm.valid);
-    console.log(this.userRegisterForm.invalid);
-    console.log(this.checkMatchigPasswords());
-    if (
-      this.userRegisterForm.valid &&
-      this.checkMatchigPasswords() &&
-      this.checkBrithDate()
-    ) {
-      alert('Registration Successful');
-    } else {
-      return
+    try {
+      if (this.userRegisterForm.valid) {
+        fetch('https://localhost:7158/api/Account/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(this.userRegisterForm.value),
+        })
+          .then((res) => {
+            if (res.status === 200) {
+              Swal.fire({
+                title: 'Registration Successful',
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonText: 'Login',
+              }).then((result) => {
+                this.router.navigate(['/login']);
+              });
+
+              return;
+            } else if (res.status === 400) {
+              return res.json().then((data) => {
+                // missing fields
+                if (data.errors) {
+                  let errors = data.errors;
+                  let errorString = '';
+                  for (let key in errors) {
+                    errorString += `${errors[key]} <br>`;
+                  }
+                  Swal.fire({
+                    title: 'Registration Failed',
+                    html: errorString,
+                    icon: 'error',
+                  });
+                }
+                // field not valid
+                else if (data[0].description) {
+                  Swal.fire({
+                    title: 'Registration Failed',
+                    text: data[0].description,
+                    icon: 'error',
+                  });
+                } else {
+                }
+              });
+            } else {
+              throw new Error('Registration Failed');
+            }
+          })
+          .catch((err) => {
+            if (err.message) {
+              alert('Registration Failed: ' + err.message);
+            } else {
+              alert('Registration Failed');
+            }
+          });
+      } else {
+        Swal.fire({
+          title: 'Registration Failed',
+          text: 'Please fill all the required fields',
+
+          icon: 'error',
+        });
+      }
+    } catch (err) {
+      Swal.fire({
+        title: 'Something went wrong',
+        text: 'Please try again later',
+        icon: 'error',
+      });
     }
   }
+
   ngOnInit(): void {}
 }
