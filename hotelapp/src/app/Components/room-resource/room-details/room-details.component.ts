@@ -12,10 +12,10 @@ export class RoomDetailsComponent {
 
   room? : Room ;
   constructor(public RoomService : RoomService, public activatedRoute:ActivatedRoute){
-    this.activatedRoute.params.subscribe(param => {
-      this.room = RoomService.getRoomById(param['id']);
-        console.log(this.room);
-      })
-    }
-  
+    // this.activatedRoute.params.subscribe(param => {
+    //   this.room = RoomService.getRoomById(param['id']);
+    //     console.log(this.room);
+    //   })
+    // }
+  }
 }

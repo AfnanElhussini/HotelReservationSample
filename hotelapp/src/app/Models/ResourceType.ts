@@ -1,5 +1,7 @@
 
 
 export class ResourceType {
-    constructor(public Id: number, public Name: string) { }
+    constructor( 
+        public Name: string,
+        public Id?: number,) { }
 }
