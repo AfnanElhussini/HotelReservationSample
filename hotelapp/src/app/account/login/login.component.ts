@@ -42,6 +42,8 @@ export class LoginComponent {
         })
           .then((res) => {
             if (res.status === 200) {
+              res.json().then((data) => {
+                localStorage.setItem('userBookingAppToken', data.token);
               Swal.fire({
                 title: 'Login Successful',
                 icon: 'success',
@@ -50,7 +52,7 @@ export class LoginComponent {
               }).then((result) => {
                 this.router.navigate(['/']);
               });
-
+              });
               return;
             } else if (res.status === 400) {
               return res.json().then((data) => {

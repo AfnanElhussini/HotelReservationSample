@@ -133,70 +133,66 @@ export class RegistrationComponent implements OnInit {
   }
   onSubmit() {
     try {
-      if (this.userRegisterForm.valid) {
-        fetch('https://localhost:7158/api/Account/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(this.userRegisterForm.value),
+      fetch('https://localhost:7158/api/Account/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(this.userRegisterForm.value),
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            Swal.fire({
+              title: 'Registration Successful',
+              icon: 'success',
+              showCancelButton: false,
+              confirmButtonText: 'Login',
+            }).then((result) => {
+              this.router.navigate(['/login']);
+            });
+
+            return;
+          } else if (res.status === 400) {
+            return res.json().then((data) => {
+              // missing fields
+              if (data.errors) {
+                let errors = data.errors;
+                let errorString = '';
+                for (let key in errors) {
+                  errorString += `${errors[key]} <br>`;
+                }
+                Swal.fire({
+                  title: 'Registration Failed',
+                  html: errorString,
+                  icon: 'error',
+                });
+              }
+              // field not valid
+              else if (data[0].description) {
+                Swal.fire({
+                  title: 'Registration Failed',
+                  text: data[0].description,
+                  icon: 'error',
+                });
+              } else {
+                Swal.fire({
+                  title: 'Registration Failed',
+                  text: 'check your data',
+                  icon: 'error',
+                });
+              }
+            });
+          } else {
+            throw new Error('Registration Failed');
+          }
         })
-          .then((res) => {
-            if (res.status === 200) {
-              Swal.fire({
-                title: 'Registration Successful',
-                icon: 'success',
-                showCancelButton: false,
-                confirmButtonText: 'Login',
-              }).then((result) => {
-                this.router.navigate(['/login']);
-              });
-
-              return;
-            } else if (res.status === 400) {
-              return res.json().then((data) => {
-                // missing fields
-                if (data.errors) {
-                  let errors = data.errors;
-                  let errorString = '';
-                  for (let key in errors) {
-                    errorString += `${errors[key]} <br>`;
-                  }
-                  Swal.fire({
-                    title: 'Registration Failed',
-                    html: errorString,
-                    icon: 'error',
-                  });
-                }
-                // field not valid
-                else if (data[0].description) {
-                  Swal.fire({
-                    title: 'Registration Failed',
-                    text: data[0].description,
-                    icon: 'error',
-                  });
-                } else {
-                }
-              });
-            } else {
-              throw new Error('Registration Failed');
-            }
-          })
-          .catch((err) => {
-            if (err.message) {
-              alert('Registration Failed: ' + err.message);
-            } else {
-              alert('Registration Failed');
-            }
-          });
-      } else {
-        Swal.fire({
-          title: 'Registration Failed',
-          text: 'Please fill all the required fields',
-
-          icon: 'error',
+        .catch((err) => {
+          if (err.message) {
+            alert('Registration Failed: ' + err.message);
+          } else {
+            alert('Registration Failed');
+          }
         });
-      }
     } catch (err) {
       Swal.fire({
         title: 'Something went wrong',
