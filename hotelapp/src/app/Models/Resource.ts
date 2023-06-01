@@ -1,7 +1,9 @@
 import { ResourceType } from "./ResourceType";
 
-
-
 export class Resource {
-    constructor(public Id: number, public Name: string, public Price: number, public ResourceType: ResourceType) { }
+    constructor(
+        public ResourceType: number |undefined,
+        public Price: number, 
+        public Id?: number)
+        { }
 }

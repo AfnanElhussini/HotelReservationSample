@@ -13,7 +13,7 @@ export class RoomListComponent {
 
   }
   ngOnInit(){
-    this.Rooms = this.RoomService.getAllRooms();
-    console.log(this.Rooms);
+    // this.Rooms = this.RoomService.getAllRooms();
+    // console.log(this.Rooms);
   }
 }
