@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   //shared component 
   {path:"aboutUs" , component: AboutUsComponent},
-  {path :"contactUs" , component : ContactUsComponent},
+  {path :"contactUs" , component : ContactUsComponent , canActivate: [AuthgaurdsGuard] },
   {path :"booking" , component : BookingComponent}
   //Login route
  
