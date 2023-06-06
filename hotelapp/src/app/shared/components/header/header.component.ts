@@ -19,6 +19,9 @@ export class HeaderComponent {
     return localStorage.getItem('userBookingAppToken');
   }
   
+  logout() {
+    localStorage.removeItem('userBookingAppToken');
+  }
 
 
 

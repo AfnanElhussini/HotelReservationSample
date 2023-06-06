@@ -114,7 +114,8 @@
                                 <li><a class="text-decoration-none"href="/resource">Our resources</a></li>
                                 <li *ngIf="!this.checkIfLoggedIn()" > <a class="text-decoration-none" href="/login"> Login</a></li>
                                 <li *ngIf="!this.checkIfLoggedIn()"><a class="text-decoration-none" href="/register">Register</a></li>
-                                <li *ngIf="this.checkIfLoggedIn()"><a class="text-decoration-none" href="">Logout</a></li>
+                                <li *ngIf="this.checkIfLoggedIn()"><a class="text-decoration-none" 
+                                (click)="logout()" href="/login">Logout</a></li>
 
                             </ul>
                         </nav>
