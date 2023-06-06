@@ -2,9 +2,9 @@ import { ServiceStatus } from "./ServiceStatus";
 
 export class Service {
     constructor (
-        public Name : string,
-        public Description : string,
-        public Status :ServiceStatus,
-        public Id?: number){}
+        public name : string,
+        public description : string,
+        public status :ServiceStatus,
+        public id?: number){}
 }
 

@@ -12,7 +12,5 @@ export class ResourceListComponent {
   constructor(private resourceService : ResourceService){}
 
   ngOnInit(){
-   this.data = this.resourceService.getAllResourceData();
-    console.log(this.data);
   }
 }

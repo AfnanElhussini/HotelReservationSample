@@ -19,11 +19,10 @@ export class ServiceListComponent {
     ]
   }
   ngOnInit(){
-  //  this.serviceService.getAll().subscribe((res)=>
-  //   {
-  //     this.response= res;
-  //     this.services= this.response.data; 
-  //     console.log(this.services)
-  //   })
+   this.serviceService.getAll().subscribe((res)=>
+    {
+      console.log(res.data[0]);
+      this.services = res.data;
+    })
   }
 }
