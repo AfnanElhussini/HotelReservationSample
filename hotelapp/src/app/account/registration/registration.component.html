@@ -77,29 +77,49 @@
                 </div>
               </div>
             </div> -->
-
-            <!-- firstName input -->
-            <div class="col-md-6">
-              <label for="firstName">First Name</label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                placeholder="Enter First Name"
-                formControlName="firstName"
-              />
+            <div class="col-12">
+              <div class="row">
+                <!-- firstName input -->
+                <div class="col-md-6">
+                  <label for="firstName">First Name</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="Enter First Name"
+                    formControlName="firstName"
+                  />
+                </div>
+                <!-- Second input -->
+                <div class="col-md-6">
+                  <label for="lastName">Last Name</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Enter Last Name"
+                    formControlName="lastName"
+                  />
+                </div>
+              </div>
             </div>
 
-            <!-- Second input -->
-            <div class="col-md-6">
-              <label for="lastName">Last Name</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                placeholder="Enter Last Name"
-                formControlName="lastName"
-              />
+            <div
+              class="col-md-6"
+              *ngIf="this.missingFeildsErrosObject?.hasOwnProperty('FirstName')"
+            >
+              <div
+                *ngFor="
+                  let missingFieldErrorItem of missingFeildsErrosObject[
+                    'FirstName'
+                  ]
+                "
+                class="alert alert-danger"
+              >
+                <div>
+                  {{ missingFieldErrorItem }}
+                </div>
+              </div>
             </div>
 
             <!-- username input -->
@@ -112,6 +132,23 @@
                 placeholder="Enter username"
                 formControlName="userName"
               />
+            </div>
+            <div
+              class="col-md-12"
+              *ngIf="this.missingFeildsErrosObject?.hasOwnProperty('UserName')"
+            >
+              <div
+                *ngFor="
+                  let missingFieldErrorItem of missingFeildsErrosObject[
+                    'UserName'
+                  ]
+                "
+                class="alert alert-danger"
+              >
+                <div>
+                  {{ missingFieldErrorItem }}
+                </div>
+              </div>
             </div>
 
             <!-- SSN input -->
@@ -179,6 +216,21 @@
                 placeholder="Enter Email"
                 formControlName="email"
               />
+            </div>
+            <div
+              class="col-md-12"
+              *ngIf="this.missingFeildsErrosObject?.hasOwnProperty('Email')"
+            >
+              <div
+                *ngFor="
+                  let missingFieldErrorItem of missingFeildsErrosObject['Email']
+                "
+                class="alert alert-danger"
+              >
+                <div>
+                  {{ missingFieldErrorItem }}
+                </div>
+              </div>
             </div>
 
             <!-- email error -->
@@ -354,6 +406,23 @@
                 placeholder="Enter Password"
                 formControlName="password"
               />
+            </div>
+            <div
+              class="col-md-12"
+              *ngIf="this.missingFeildsErrosObject?.hasOwnProperty('Password')"
+            >
+              <div
+                *ngFor="
+                  let missingFieldErrorItem of missingFeildsErrosObject[
+                    'Password'
+                  ]
+                "
+                class="alert alert-danger"
+              >
+                <div>
+                  {{ missingFieldErrorItem }}
+                </div>
+              </div>
             </div>
 
             <!-- password error -->

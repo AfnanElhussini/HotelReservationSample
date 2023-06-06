@@ -13,7 +13,12 @@ export class HeaderComponent {
    toggleNav() {
     this.mobileMenuShow = !this.mobileMenuShow;
     return this.mobileMenuShow;
+   }
+
+   checkIfLoggedIn() {
+    return localStorage.getItem('userBookingAppToken');
   }
+  
 
 
 

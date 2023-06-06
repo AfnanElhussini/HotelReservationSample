@@ -7,7 +7,7 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import { User } from 'src/app/Models/user';
-
+import { ToastrService } from 'ngx-toastr';
 import { ConfirmedValidator } from 'src/app/shared/customHooks/confirmed.validator';
 import Swal from 'sweetalert2';
 
@@ -17,10 +17,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
-  [x: string]: any;
-
+  missingFeildsErrosObject: any;
   userRegisterForm: FormGroup;
-
+  fixedErrorToast(){
+    return this.toastr.error('Registration Failed please try again' );
+  }
   registerUserFunc(data: object) {
     console.log(data);
     fetch('https://localhost:7158/api/Account/register', {
@@ -67,7 +68,10 @@ export class RegistrationComponent implements OnInit {
 
   //   console.log(age, this.olderThan18, year, userYear);
   // }
-  constructor(private router: Router) {
+  constructor(private router: Router , private toastr: ToastrService) {
+     
+  
+
     this.userRegisterForm = new FormGroup({
       firstName: new FormControl('', [
         Validators.required,
@@ -156,30 +160,16 @@ export class RegistrationComponent implements OnInit {
             return res.json().then((data) => {
               // missing fields
               if (data.errors) {
-                let errors = data.errors;
-                let errorString = '';
-                for (let key in errors) {
-                  errorString += `${errors[key]} <br>`;
-                }
-                Swal.fire({
-                  title: 'Registration Failed',
-                  html: errorString,
-                  icon: 'error',
-                });
+                let errors = data.errors;     
+                this.missingFeildsErrosObject = errors;
               }
               // field not valid
               else if (data[0].description) {
-                Swal.fire({
-                  title: 'Registration Failed',
-                  text: data[0].description,
-                  icon: 'error',
-                });
+                // show toast from ngx-toastr
+                this.toastr.error(data[0].description, 'Registration Failed');
+
               } else {
-                Swal.fire({
-                  title: 'Registration Failed',
-                  text: 'check your data',
-                  icon: 'error',
-                });
+                this.fixedErrorToast()
               }
             });
           } else {
@@ -187,18 +177,10 @@ export class RegistrationComponent implements OnInit {
           }
         })
         .catch((err) => {
-          if (err.message) {
-            alert('Registration Failed: ' + err.message);
-          } else {
-            alert('Registration Failed');
-          }
+          this.fixedErrorToast()
         });
     } catch (err) {
-      Swal.fire({
-        title: 'Something went wrong',
-        text: 'Please try again later',
-        icon: 'error',
-      });
+      this.fixedErrorToast()
     }
   }
 

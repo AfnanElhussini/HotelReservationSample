@@ -37,6 +37,23 @@
                 formControlName="email"
               />
             </div>
+            <div
+              class="col-md-12"
+              *ngIf="this.missingFeildsErrosObject?.hasOwnProperty('Email')"
+            >
+              <div
+                *ngFor="
+                  let missingFieldErrorItem of missingFeildsErrosObject[
+                    'Email'
+                  ]
+                "
+                class="alert alert-danger"
+              >
+                <div>
+                  {{ missingFieldErrorItem }}
+                </div>
+              </div>
+            </div>
 
             <!-- <div class="col-md-6">
               <input
@@ -121,6 +138,23 @@
                 placeholder="Enter your Password"
                 formControlName="password"
               />
+            </div>
+            <div
+              class="col-md-12"
+              *ngIf="this.missingFeildsErrosObject?.hasOwnProperty('Password')"
+            >
+              <div
+                *ngFor="
+                  let missingFieldErrorItem of missingFeildsErrosObject[
+                    'Password'
+                  ]
+                "
+                class="alert alert-danger"
+              >
+                <div>
+                  {{ missingFieldErrorItem }}
+                </div>
+              </div>
             </div>
 
             <!-- <div class="col-lg-12">
