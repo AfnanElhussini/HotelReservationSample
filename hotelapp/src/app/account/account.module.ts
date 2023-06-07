@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { BookingComponent } from './booking/booking.component';
 
 
 
@@ -11,7 +10,7 @@ import { BookingComponent } from './booking/booking.component';
   declarations: [
     LoginComponent,
     RegistrationComponent,
-    BookingComponent,  
+    
   ],
   imports: [
     CommonModule,
