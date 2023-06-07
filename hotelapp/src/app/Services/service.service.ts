@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Service } from '../Models/Service';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { apiUrl } from 'src/app/environments/environment'
 import { ResponseModel } from '../Models/ResponseModel';
 import { Resource } from '../Models/Resource';
@@ -20,33 +20,14 @@ export class ServiceService {
       })
     }
   }
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      console.log("An error occured: ", error.error);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, body was: `, error.error);
-    }
 
-    return throwError(() => new Error('Something bad happened, Please try again later'));
-  }
-
-  getAll(): Observable<ResponseModel> {
+  getAll(): Observable<ResponseModel<Service>> {
     return this.httpClient
-      .get<ResponseModel>(`${apiUrl}/api/Service`)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
+      .get<ResponseModel<Service>>(`${apiUrl}/api/Service`)
   }
   getAllResources(sourceId: number): Observable<Resource[]> {
     return this.httpClient
       .get<Resource[]>(`${apiUrl}/api/resource`)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
   }
-
 
 }
