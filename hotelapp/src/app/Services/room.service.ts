@@ -10,8 +10,13 @@ import { Observable } from 'rxjs';
 export class RoomService {
   constructor(private http: HttpClient) { }
 
-  GetAll(): Observable<ResponseModel<Room>> {
-    return this.http.get<ResponseModel<Room>>(apiUrl)
+  GetAllRooms(): Observable<ResponseModel<Room>> {
+    return this.http.get<ResponseModel<Room>>(apiUrl + "ResourceData/GetResouceData/1")
   }
-
+  GetRoomById(id: number): Observable<ResponseModel<Room>> {
+    return this.http.get<ResponseModel<Room>>(apiUrl + "Resource/" + id)
+  }
+  GetRoomScheduleById(id: number): Observable<ResponseModel<Room>> {
+    return this.http.get<ResponseModel<Room>>(apiUrl + "Schedule/" + id)
+  }
 }

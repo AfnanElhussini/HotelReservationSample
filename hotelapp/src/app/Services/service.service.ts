@@ -23,11 +23,11 @@ export class ServiceService {
 
   getAll(): Observable<ResponseModel<Service>> {
     return this.httpClient
-      .get<ResponseModel<Service>>(`${apiUrl}/api/Service`)
+      .get<ResponseModel<Service>>(apiUrl + "Service")
   }
   getAllResources(sourceId: number): Observable<Resource[]> {
     return this.httpClient
-      .get<Resource[]>(`${apiUrl}/api/resource`)
+      .get<Resource[]>(apiUrl + 'resource')
   }
 
 }
