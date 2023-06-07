@@ -1,9 +1,8 @@
-import { Service } from "./Service";
-
-export class ResponseModel{
-    constructor(
-        public statusCode: number ,
-        public message: string,
-        public data: Service[] 
-    ){}
+export class ResponseModel<T>{
+  constructor(
+    public statusCode: number,
+    public message: string,
+    public data: T[]
+  ) { }
 }
+
