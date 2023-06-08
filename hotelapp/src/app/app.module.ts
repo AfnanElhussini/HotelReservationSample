@@ -9,9 +9,11 @@ import { RoomResourceModule } from './Components/room-resource/room-resource.mod
 import { ResourceModule } from './Components/resource/resource.module';
 import { AccountModule } from './account/account.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { RetryInterceptor } from './shared/interceptors/retry.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

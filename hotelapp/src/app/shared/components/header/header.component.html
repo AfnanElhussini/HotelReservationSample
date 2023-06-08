@@ -3,7 +3,7 @@
  <div class="canvas-open" (click)="toggleNav()">
      <i class="icon_menu"></i>
  </div>
- <div 
+ <div
    [class]="toggleNav() ? 'offcanvas-menu-wrapper show-offcanvas-menu-wrapper' : 'offcanvas-menu-wrapper'">
      <div class="canvas-close" (click)="toggleNav()">
          <i class="icon_close"></i>
@@ -40,7 +40,7 @@
              <li><a routerLink="/cantactUs">Contact</a></li>
             <li> <a routerLink="/login"> Login</a></li>
             <li><a routerLink="/register">Register</a></li>
-           
+
          </ul>
      </nav>
      <div id="mobile-menu-wrap"></div>
@@ -110,12 +110,18 @@
                                 <li><a class="text-decoration-none" href="/aboutUs">About Us</a></li>
                                 <li><a class="text-decoration-none"href="/contactUs">Contact</a></li>
                                 <li><a class="text-decoration-none"href="/service">Our Service</a></li>
-                                <li><a class="text-decoration-none"href="/resource">Our resources</a></li>
-                                <li *ngIf="!this.checkIfLoggedIn()" > <a class="text-decoration-none" href="/login"> Login</a></li>
-                                <li *ngIf="!this.checkIfLoggedIn()"><a class="text-decoration-none" href="/register">Register</a></li>
-                                <li *ngIf="this.checkIfLoggedIn()"><a class="text-decoration-none" 
-                                (click)="logout()" href="/login">Logout</a></li>
 
+                                <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Availabile Resources
+                                  </a>
+                                  <ul class="dropdown-menu">
+                                    <!-- <li *ngFor="let rt of resourceTypes"><a class="dropdown-item" [routerLink]="['resources','']" routerLinkActive="router-link-active" >{{rt.name}}</a></li> -->
+                                  </ul>
+                                </li>
+
+                                <li> <a class="text-decoration-none" href="/login"> Login</a></li>
+                                <li><a class="text-decoration-none" href="/register">Register</a></li>
                             </ul>
                         </nav>
                         <!-- <div class="nav-right search-switch">
