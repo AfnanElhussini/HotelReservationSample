@@ -14,9 +14,6 @@ export class ServiceListComponent {
   services : Service[]=[];
   // response:ResponseModel =new ResponseModel(0, "", []) ;
   constructor(private serviceService: ServiceService){
-    this.services = [
-     new Service('Booking room','Lorem ipsum dolor sit amet, consectetur adipisicin…smod tempor incididunt ut labore et dolore magna.', 0 , 1)
-    ]
   }
   ngOnInit(){
    this.serviceService.getAll().subscribe((res)=>

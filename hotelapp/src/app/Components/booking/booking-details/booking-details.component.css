@@ -1,0 +1,8 @@
+:root {
+  --main-color: #dfa974;
+}
+
+.setmaincolor {
+  color: var(--main-color);
+}
+
