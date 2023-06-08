@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ResourceListComponent } from './resource-list/resource-list.component';
+import { ResourceDetailsComponent } from './resource-details/resource-details.component';
 
 const routes: Routes = [
-  {path:"" , component:ResourceListComponent}
+  {
+    path: "", component: ResourceListComponent, pathMatch: "full"
+  },
+  { path: ":id", component: ResourceDetailsComponent }
 ];
 
 @NgModule({

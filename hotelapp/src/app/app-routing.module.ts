@@ -10,10 +10,10 @@ import { AuthgaurdsGuard } from './Gaurds/authgaurds.guard';
 const routes: Routes = [
 
   { path: '', component: HomeComponent, pathMatch: "full", },
-  // { path: "rooms", loadChildren: () => import("./Components/room-resource/room-resource.module").then(m => m.RoomResourceModule) },
   { path: "service", loadChildren: () => import("./Components/service/service.module").then(m => m.ServiceModule) },
   { path: "resource", loadChildren: () => import("./Components/resource/resource.module").then(m => m.ResourceModule) },
   { path: "booking", loadChildren: () => import("./Components/booking/booking.module").then(m => m.BookingModule) },
+  // { path: "details", loadChildren: () => import("./Components/room-resource/room-resource.module").then(m => m.RoomResourceModule) },
   // { path: "rooms", loadChildren: () => import("./Components/room-resource/room-resource.module").then(m => m.RoomResourceModule) , canActivate: [AuthgaurdsGuard]  },
 
   //Login route

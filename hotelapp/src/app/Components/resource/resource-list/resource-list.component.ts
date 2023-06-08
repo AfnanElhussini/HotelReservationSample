@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Resource } from 'src/app/Models/Resource';
-import { ResourceData } from 'src/app/Models/ResourceData';
 import { ResourceService } from 'src/app/Services/resource.service';
 
 @Component({
