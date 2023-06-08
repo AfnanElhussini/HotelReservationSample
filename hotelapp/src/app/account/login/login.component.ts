@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,8 +11,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  missingFeildsErrosObject: any;
   loginFormGroup: FormGroup;
-  constructor(private router: Router) {
+  fixedErrorToast() {
+    return this.toastr.error('Registration Failed please try again');
+  }
+  constructor(private router: Router, private toastr: ToastrService) {
     this.loginFormGroup = new FormGroup({
       // ssn: new FormControl('', [
       //   Validators.required,
@@ -18,32 +24,62 @@ export class LoginComponent {
       //   Validators.maxLength(14),
       //   Validators.pattern('^[0-9]*$'),
       // ]),
-      email: new FormControl('', [
-        Validators.required,
-        // Validators.minLength(3),
-        // Validators.maxLength(12),
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-        // Validators.minLength(8),
-      ]),
+      email: new FormControl('', {
+        updateOn: 'submit',
+        validators: [
+          Validators.required,
+          Validators.pattern(
+            '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$'
+          ),
+        ],
+      }),
+
+      password: new FormControl('', {
+        updateOn: 'submit',
+        validators: Validators.required,
+      }),
+      
     });
   }
 
+  emailFEValidation = false;
+  passwordFEValidation = false;
+
+  ValidationFE() {
+    if (this.loginFormGroup.controls['email'].invalid) {
+      this.emailFEValidation = true;
+    } else {
+      this.emailFEValidation = false;
+    }
+    if (this.loginFormGroup.controls['password'].invalid) {
+      this.passwordFEValidation = true;
+    } else {
+      this.passwordFEValidation = false;
+    }
+    return this.emailFEValidation, this.passwordFEValidation;
+  }
+
   onSubmit() {
-    try {
-      if (this.loginFormGroup.valid) {
-        fetch('https://localhost:7158/api/Account/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(this.loginFormGroup.value),
-        })
-          .then((res) => {
-            if (res.status === 200) {
-              res.json().then((data) => {
-                localStorage.setItem('userBookingAppToken', data.token);
+    if (this.loginFormGroup.invalid) {
+      // alert('Please fill all the required fields');ValidationFE()
+      this.ValidationFE();
+      
+      // return this.userRegisterForm.controls['email'].errors
+
+    } else {
+      this.emailFEValidation = false;
+      this.passwordFEValidation = false;
+      fetch('https://localhost:7158/api/Account/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(this.loginFormGroup.value),
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            res.json().then((data) => {
+              localStorage.setItem('userBookingAppToken', data.token);
               Swal.fire({
                 title: 'Login Successful',
                 icon: 'success',
@@ -52,62 +88,29 @@ export class LoginComponent {
               }).then((result) => {
                 this.router.navigate(['/']);
               });
-              });
-              return;
-            } else if (res.status === 400) {
-              return res.json().then((data) => {
-                console.log(data);
-                // missing fields
-                if (data.errors) {
-                  let errors = data.errors;
-                  let errorString = '';
-                  for (let key in errors) {
-                    errorString += `${errors[key]} <br>`;
-                  }
-                  Swal.fire({
-                    title: 'Login Failed',
-                    html: errorString,
-                    icon: 'error',
-                  });
-                }
-                // field not valid
-                else if (data[0].description) {
-                  Swal.fire({
-                    title: 'Login Failed',
-                    text: data[0].description,
-                    icon: 'error',
-                  });
-                } else if (data === 'Invalid Password') {
-                  Swal.fire({
-                    title: 'Login Failed',
-                    text: 'Please enter valid email and password',
-                    icon: 'error',
-                  });
-                }
-              });
-            } else {
-              return;
-            }
-          })
-          .catch((err) => {
-            Swal.fire({
-              title: 'Something went wrong',
-              text: 'Please enter valid email and password',
-              icon: 'error',
             });
-          });
-      } else {
-        Swal.fire({
-          title: 'Login Failed',
-          text: 'Please enter valid email and password',
+            return;
+          } else if (res.status === 400) {
+            return res.json().then((data) => {
+              console.log(data);
+              // missing fields
+              if (data.errors) {
+                let errors = data.errors;
+                this.missingFeildsErrosObject = errors;
+              }
+              // field not valid
+              else if (data[0].description) {
+                // show toast from ngx-toastr
+                this.toastr.error(data[0].description, 'Login Failed');
+              }
+            });
+          } else {
+            return;
+          }
+        })
+        .catch((err) => {
+          this.toastr.error('please enter valid email or password');
         });
-      }
-    } catch (err) {
-      Swal.fire({
-        title: 'Something went wrong',
-        text: 'Please try again later',
-        icon: 'error',
-      });
     }
   }
 }
