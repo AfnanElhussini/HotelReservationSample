@@ -116,7 +116,7 @@
                                     Availabile Resources
                                   </a>
                                   <ul class="dropdown-menu">
-                                    <!-- <li *ngFor="let rt of resourceTypes"><a class="dropdown-item" [routerLink]="['resources','']" routerLinkActive="router-link-active" >{{rt.name}}</a></li> -->
+                                    <li *ngFor="let rt of resourceTypes"><a class="dropdown-item" routerLink="resource/{{rt.id}}" routerLinkActive="router-link-active"  routerLinkActive="router-link-active" >{{rt.name}}</a></li>
                                   </ul>
                                 </li>
 

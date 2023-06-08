@@ -15,12 +15,12 @@ export class HeaderComponent {
   toggleNav() {
     this.mobileMenuShow = !this.mobileMenuShow;
     return this.mobileMenuShow;
-   }
+  }
 
-   checkIfLoggedIn() {
+  checkIfLoggedIn() {
     return localStorage.getItem('userBookingAppToken');
   }
-  
+
   logout() {
     localStorage.removeItem('userBookingAppToken');
   }

@@ -13,10 +13,10 @@ export class ResourceTypeService {
   constructor(private http: HttpClient) { }
 
   GetAll(): Observable<ResponseModel<ResourceType>> {
-    return this.http.get<ResponseModel<ResourceType>>(apiUrl + "ResouceType")
+    return this.http.get<ResponseModel<ResourceType>>(apiUrl + "ResourceType")
   }
   GetResouceTypeById(ResourceTypeId: number): Observable<ResponseModel<ResourceType>> {
-    return this.http.get<ResponseModel<ResourceType>>(apiUrl + "ResouceType/" + ResourceTypeId)
+    return this.http.get<ResponseModel<ResourceType>>(apiUrl + "ResourceType/" + ResourceTypeId)
   }
 
 }
