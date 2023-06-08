@@ -1,8 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ResourceType } from '../Models/ResourceType';
-import { Resource } from '../Models/Resource';
-import { ResourceAttribute } from '../Models/ServiceMetaData';
-import { ResourceData } from '../Models/ResourceData';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ResponseModel } from '../Models/ResponseModel';

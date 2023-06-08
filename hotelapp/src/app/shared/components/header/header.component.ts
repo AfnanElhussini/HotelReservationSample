@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ResourceType } from 'src/app/Models/ResourceType';
+import { ResourceTypeService } from 'src/app/Services/resource-type.service';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +10,23 @@ import { Component } from '@angular/core';
 })
 
 export class HeaderComponent {
-   mobileMenuShow = false;
+  mobileMenuShow = false;
 
-   toggleNav() {
+  toggleNav() {
     this.mobileMenuShow = !this.mobileMenuShow;
     return this.mobileMenuShow;
   }
 
+  resourceTypes: ResourceType[] = [];
+
+  constructor(private resourceTypeService: ResourceTypeService) { }
+
+  ngOnInit(): void {
+    this.resourceTypeService.GetAll().subscribe(data =>
+      this.resourceTypes = data.data
+    )
+  }
 
 
 
-  
 }
