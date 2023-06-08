@@ -8,25 +8,21 @@ import { ContactUsComponent } from './shared/components/contact-us/contact-us.co
 import { AuthgaurdsGuard } from './Gaurds/authgaurds.guard';
 
 const routes: Routes = [
+
   { path: '', component: HomeComponent, pathMatch: "full", },
-  // { path: "rooms", loadChildren: () => import("./Components/room-resource/room-resource.module").then(m => m.RoomResourceModule) },  
-  { path: "service", loadChildren: () => import("./Components/service/service.module").then(m => m.ServiceModule) },  
-  { path: "resource", loadChildren: () => import("./Components/resource/resource.module").then(m => m.ResourceModule) },  
-  { path: "booking", loadChildren: () => import("./Components/booking/booking.module").then(m => m.BookingModule) },  
-  // { path: "rooms", loadChildren: () => import("./Components/room-resource/room-resource.module").then(m => m.RoomResourceModule) , canActivate: [AuthgaurdsGuard]  },  
- 
+  // { path: "rooms", loadChildren: () => import("./Components/room-resource/room-resource.module").then(m => m.RoomResourceModule) },
+  { path: "service", loadChildren: () => import("./Components/service/service.module").then(m => m.ServiceModule) },
+  { path: "resource", loadChildren: () => import("./Components/resource/resource.module").then(m => m.ResourceModule) },
+  { path: "booking", loadChildren: () => import("./Components/booking/booking.module").then(m => m.BookingModule) },
+  // { path: "rooms", loadChildren: () => import("./Components/room-resource/room-resource.module").then(m => m.RoomResourceModule) , canActivate: [AuthgaurdsGuard]  },
+
+  //Login route
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-  //shared component 
-  {path:"aboutUs" , component: AboutUsComponent},
-<<<<<<< HEAD
-  {path :"contactUs" , component : ContactUsComponent , canActivate: [AuthgaurdsGuard] },
-=======
-  {path :"contactUs" , component : ContactUsComponent },
-  {path :"booking" , component : BookingComponent}
->>>>>>> 06a76fd73600708523c85748971a721a6d5a8b0f
-  //Login route
- 
+
+  //shared component
+  { path: "aboutUs", component: AboutUsComponent },
+  { path: "contactUs", component: ContactUsComponent },
 
 ];
 
