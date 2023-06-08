@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Room } from 'src/app/Models/Room';
-import { RoomService } from 'src/app/Services/room.service';
+import { ResourceService } from 'src/app/Services/resource.service';
 
 @Component({
   selector: 'app-room-details',
@@ -10,8 +10,8 @@ import { RoomService } from 'src/app/Services/room.service';
 })
 export class RoomDetailsComponent {
 
-  room? : Room ;
-  constructor(public RoomService : RoomService, public activatedRoute:ActivatedRoute){
+  room?: Room;
+  constructor(public RoomService: ResourceService, public activatedRoute: ActivatedRoute) {
     // this.activatedRoute.params.subscribe(param => {
     //   this.room = RoomService.getRoomById(param['id']);
     //     console.log(this.room);

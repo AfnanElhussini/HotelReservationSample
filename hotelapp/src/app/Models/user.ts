@@ -14,5 +14,5 @@ export class User {
     public Birthdate: Date,
     public Password: string,
     public ConfirmPassword: string
-  ) {}
+  ) { }
 }

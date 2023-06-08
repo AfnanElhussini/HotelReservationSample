@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Room } from 'src/app/Models/Room';
-import { RoomService } from 'src/app/Services/room.service';
+import { ResourceService } from 'src/app/Services/resource.service';
 
 @Component({
   selector: 'app-room-list',
@@ -8,11 +8,11 @@ import { RoomService } from 'src/app/Services/room.service';
   styleUrls: ['./room-list.component.css']
 })
 export class RoomListComponent {
-  Rooms : Room[]=[];
-  constructor (private RoomService : RoomService){
+  Rooms: Room[] = [];
+  constructor(private RoomService: ResourceService) {
 
   }
-  ngOnInit(){
+  ngOnInit() {
     // this.Rooms = this.RoomService.getAllRooms();
     // console.log(this.Rooms);
   }

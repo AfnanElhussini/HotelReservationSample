@@ -9,6 +9,7 @@ import { AccountModule } from './account/account.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RetryInterceptor } from './shared/interceptors/retry.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { RetryInterceptor } from './shared/interceptors/retry.interceptor';
     FormsModule,
     HttpClientModule,
     SharedModule,
+    ToastrModule.forRoot(),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

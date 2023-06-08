@@ -4,12 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn(){
+  isLoggedIn() {
     return localStorage.getItem('userBookingAppToken') !== null;
   }
-  constructor() {
-   
-  }
+  constructor() { }
 }
 
 
