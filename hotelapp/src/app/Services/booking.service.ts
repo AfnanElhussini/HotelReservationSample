@@ -1,9 +1,9 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, retry, throwError } from 'rxjs';
-import { Resource } from '../Models/Resource';
 import { ResponseModel } from '../Models/ResponseModel';
 import { apiUrl } from '../environments/environment';
+import { BookingItem } from '../Models/BookingItem';
 
 @Injectable({
   providedIn: 'root'
@@ -18,33 +18,30 @@ export class BookingService {
       })
     }
   }
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      console.log("An error occured: ", error.error);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, body was: `, error.error);
-    }
 
-    return throwError(() => new Error('Something bad happened, Please try again later'));
+
+  getAllBookingItems(): Observable<ResponseModel<BookingItem>> {
+    return this.httpClient.get<ResponseModel<BookingItem>>( apiUrl +`BookingItem`);
   }
 
-  getAll(): Observable<ResponseModel> {
-    return this.httpClient
-      .get<ResponseModel>(`${apiUrl}/BookingItem`)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
-  }
-  // getuserBookingItem(sourceId: number): Observable<Resource[]> {
-  //   return this.httpClient
-  //     .get<Resource[]>(`${apiUrl}/api/resource`)
-  //     .pipe(
-  //       retry(2),
-  //       catchError(this.handleError)
-  //     )
+  // getBookingItemsByFilter(ResourceId : number , price :number ): Observable<ResponseModel<BookingItem>> {
+  //   return this.httpClient.get<ResponseModel<BookingItem>>( apiUrl +`BookingItem?ResourceId=`+ResourceId + "&Price=" +price );
   // }
 
+  // getBookingItemsByResourceId(ResourceId : number ): Observable<ResponseModel<BookingItem>> {
+  //   return this.httpClient.get<ResponseModel<BookingItem>>( `${apiUrl}BookingItem?ResourceId=${ResourceId}` );
+  // }
+  getBookingItemsByBookId(BookId : number  ): Observable<ResponseModel<BookingItem>> {
+    return this.httpClient.get<ResponseModel<BookingItem>>(`${apiUrl}BookingItem?BookId=${BookId}`);
+  }
+  // getBookingItemsPrice( price :number ): Observable<ResponseModel<BookingItem>> {
+  //   return this.httpClient.get<ResponseModel<BookingItem>>( `${apiUrl}BookingItem?Price=${price}`);
+  // }
 
+  AddBookingItem(bookingItem :BookingItem): Observable<BookingItem>{
+    return this.httpClient.post<BookingItem>(`${apiUrl}/BookingItem/AddOne`, JSON.stringify(bookingItem), this.httpOption );
+  }
+  UpdateBookingItem(bookingId : number , bookingItem :BookingItem): Observable<BookingItem>{
+    return this.httpClient.patch<BookingItem>(`${apiUrl}/BookingItem?bookingId=${bookingId}`, JSON.stringify(bookingItem), this.httpOption );
+  }
 }

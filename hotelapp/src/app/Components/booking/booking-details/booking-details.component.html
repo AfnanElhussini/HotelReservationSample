@@ -1,1 +1,25 @@
-<p>booking-details works!</p>
+
+<div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Resource Name</th>
+          <th scope="col">Price</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bookingItem of bookingItems , let i = index">
+          <td>{{i+1}}</td>
+          <td>{{bookingItem.resourceId}}</td>
+          <td>{{bookingItem.price}}</td>
+          <td>
+            <button type="button" class="btn btn-info" [routerLink]="['/service',bookingItem.bookingId]">details</button>
+            <button type="button" class="btn btn-danger" onclick="DeleteBookingItem(bookingItem?.resourceId)" >cancel</button>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
