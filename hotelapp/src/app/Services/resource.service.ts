@@ -9,14 +9,8 @@ import { ResourceData } from '../Models/ResourceData';
 })
 export class ResourceService {
 
-  resourceType: ResourceType[] = [];
-  resource: Resource[] = [];
-  resourceAttributes: ResourceAttribute[] = [];
-  resourceData: ResourceData[] = []
-
   constructor() { }
 
-  getAllResourceData(): ResourceData[] {
-    return this.resourceData;
-  }
+
+
 }

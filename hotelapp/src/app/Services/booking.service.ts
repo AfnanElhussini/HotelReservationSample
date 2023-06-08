@@ -24,13 +24,13 @@ export class BookingService {
     return this.httpClient.get<ResponseModel<BookingItem>>( apiUrl +`BookingItem`);
   }
 
-  // getBookingItemsByFilter(ResourceId : number , price :number ): Observable<ResponseModel<BookingItem>> {
-  //   return this.httpClient.get<ResponseModel<BookingItem>>( apiUrl +`BookingItem?ResourceId=`+ResourceId + "&Price=" +price );
-  // }
-
-  // getBookingItemsByResourceId(ResourceId : number ): Observable<ResponseModel<BookingItem>> {
+  // getBookingItemsByFilter(ResourceId : number  ): Observable<ResponseModel<BookingItem>> {
   //   return this.httpClient.get<ResponseModel<BookingItem>>( `${apiUrl}BookingItem?ResourceId=${ResourceId}` );
   // }
+
+  getBookingItemsByResourceId(ResourceId : number ): Observable<ResponseModel<BookingItem>> {
+    return this.httpClient.get<ResponseModel<BookingItem>>( `${apiUrl}BookingItem?ResourceId=${ResourceId}` );
+  }
   getBookingItemsByBookId(BookId : number  ): Observable<ResponseModel<BookingItem>> {
     return this.httpClient.get<ResponseModel<BookingItem>>(`${apiUrl}BookingItem?BookId=${BookId}`);
   }
@@ -41,7 +41,13 @@ export class BookingService {
   AddBookingItem(bookingItem :BookingItem): Observable<BookingItem>{
     return this.httpClient.post<BookingItem>(`${apiUrl}/BookingItem/AddOne`, JSON.stringify(bookingItem), this.httpOption );
   }
+  AddRangeOfBookingItem(bookingItems :BookingItem[]): Observable<BookingItem>{
+    return this.httpClient.post<BookingItem>(`${apiUrl}/BookingItem/AddRange`, JSON.stringify(bookingItems), this.httpOption );
+  }
+  
   UpdateBookingItem(bookingId : number , bookingItem :BookingItem): Observable<BookingItem>{
     return this.httpClient.patch<BookingItem>(`${apiUrl}/BookingItem?bookingId=${bookingId}`, JSON.stringify(bookingItem), this.httpOption );
   }
+
+
 }

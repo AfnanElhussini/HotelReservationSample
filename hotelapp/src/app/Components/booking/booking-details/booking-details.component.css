@@ -1,8 +1,8 @@
-table {
-    width: 100%;
-  }
-  
-  th.mat-sort-header-sorted {
-    color: black;
-  }
-  
+:root {
+  --main-color: #dfa974;
+}
+
+.setmaincolor {
+  color: var(--main-color);
+}
+
