@@ -25,7 +25,7 @@
      </div>
      <nav class="mainmenu mobile-menu">
          <ul>
-             <li class="active"><a href="./index.html">Home</a></li>
+             <li class="active"><a routerLink="/">Home>Home</a></li>
              <li><a routerLink="/rooms">Rooms</a></li>
              <li><a routerLink="/aboutUs">About Us</a></li>
              <li><a href="./pages.html">Pages</a>
@@ -96,7 +96,7 @@
             <div class="row">
                 <div class="col-lg-1">
                     <div class="logo">
-                        <a href="./index.html">
+                        <a routerLink="/">Home>
                             <img src="/assets/img/logo.png" alt="">
                         </a>
                     </div>
@@ -105,23 +105,15 @@
                     <div class="nav-menu">
                         <nav class="mainmenu">
                             <ul>
-                                <li class="active"><a class="text-decoration-none" href="./index.html">Home</a></li>
-                                <li><a class="text-decoration-none" href="/rooms">Rooms</a></li>
-                                <li><a class="text-decoration-none" href="/aboutUs">About Us</a></li>
-                                <li><a class="text-decoration-none"href="/contactUs">Contact</a></li>
-                                <li><a class="text-decoration-none"href="/service">Our Service</a></li>
+                                <li class="active"><a class="text-decoration-none" routerLink="">Home</a></li>
+                                <!-- <li><a class="text-decoration-none" routerLink="rooms">Rooms</a></li> -->
+                                <li><a class="text-decoration-none" routerLink="about">About Us</a></li>
+                                <li><a class="text-decoration-none"routerLink="contact">Contact</a></li>
+                                <!-- <li><a class="text-decoration-none"href="/service">Our Service</a></li> -->
 
-                                <li class="nav-item dropdown">
-                                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Availabile Resources
-                                  </a>
-                                  <ul class="dropdown-menu">
-                                    <li *ngFor="let rt of resourceTypes"><a class="dropdown-item" routerLink="resource/{{rt.id}}" routerLinkActive="router-link-active"  routerLinkActive="router-link-active" >{{rt.name}}</a></li>
-                                  </ul>
-                                </li>
-
-                                <li> <a class="text-decoration-none" href="/login"> Login</a></li>
-                                <li><a class="text-decoration-none" href="/register">Register</a></li>
+                                <!-- <li> <a class="text-decoration-none" href="/resourcetypes">Resource Types</a></li> -->
+                                <li> <a class="text-decoration-none" routerLink="login"> Login</a></li>
+                                <li><a class="text-decoration-none" routerLink="register">Register</a></li>
                             </ul>
                         </nav>
                         <!-- <div class="nav-right search-switch">

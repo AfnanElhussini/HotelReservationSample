@@ -21,8 +21,8 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
 
   //shared component
-  { path: "aboutUs", component: AboutUsComponent },
-  { path: "contactUs", component: ContactUsComponent },
+  { path: "about", component: AboutUsComponent },
+  { path: "contact", component: ContactUsComponent },
 
 ];
 
