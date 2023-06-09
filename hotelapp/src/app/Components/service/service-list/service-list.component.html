@@ -9,10 +9,6 @@
                         <i class="flaticon-036-parking"></i>
                         <h4>{{service?.name}}</h4>
                         <p>{{service?.description}}</p>
-                        <div *ngIf="service.status == 0">
-                            <h4>Active</h4>
-                        </div>
-                        <a [routerLink]="['details' , service.id]" class="btn details">Details</a>
                     </div>
                 </div>
             </div>
