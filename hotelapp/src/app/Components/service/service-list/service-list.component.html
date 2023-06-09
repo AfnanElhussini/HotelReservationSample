@@ -4,50 +4,20 @@
     <div class="container">
         <div class="about-page-text">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="ap-title">
-                        <h2>Welcome To Our Service</h2>
-                        <h5>{{services[0].name}}</h5>
-                        <p> {{services[0].description}}</p>
-                    </div>
-                </div>
-                <div class="col-lg-5 offset-lg-1">
-                    <ul class="ap-services">
-                        <li><i class="icon_check"></i> 20% Off On Accommodation.</li>
-                        <li><i class="icon_check"></i> Complimentary Daily Breakfast</li>
-                        <li><i class="icon_check"></i> 3 Pcs Laundry Per Day</li>
-                        <li><i class="icon_check"></i> Free Wifi.</li>
-                        <li><i class="icon_check"></i> Discount 20% On F&B</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="about-page-services">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="ap-service-item set-bg" style="background-image: url('assets/img/about/about-p1.jpg');">
-                        <div class="api-text">
-                            <h3>Restaurants Services</h3>
+                <div class="col-lg-4 col-sm-6" *ngFor="let service of services">
+                    <div class="service-item">
+                        <i class="flaticon-036-parking"></i>
+                        <h4>{{service?.name}}</h4>
+                        <p>{{service?.description}}</p>
+                        <div *ngIf="service.status == 0">
+                            <h4>Active</h4>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="ap-service-item set-bg" style="background-image: url('assets/img/about/about-p2.jpg');">
-                        <!-- <img src="../../../../assets/img/about/about-p2.jpg" alt=""> -->
-                        <div class="api-text">
-                            <h3>Travel & Camping</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="ap-service-item set-bg" style="background-image: url('assets/img/about/about-p3.jpg');">
-                        <div class="api-text">
-                            <h3>Event & Party</h3>
-                        </div>
+                        <a [routerLink]="['details' , service.id]" class="btn details">Details</a>
                     </div>
                 </div>
             </div>
         </div>
+      
     </div>
 </section>
 <!-- About Us Page Section End -->

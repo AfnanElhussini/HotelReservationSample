@@ -12,13 +12,12 @@ import { environment } from 'src/app/environments/environment';
 })
 export class ServiceListComponent {
   services : Service[]=[];
-  // response:ResponseModel =new ResponseModel(0, "", []) ;
   constructor(private serviceService: ServiceService){
   }
   ngOnInit(){
    this.serviceService.getAll().subscribe((res)=>
     {
-      console.log(res.data[0]);
+      console.log(res.data);
       this.services = res.data;
     })
   }

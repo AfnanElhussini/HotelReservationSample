@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { apiUrl } from 'src/app/environments/environment'
 import { ResponseModel } from '../Models/ResponseModel';
-import { Resource } from '../Models/Resource';
 
 @Injectable({
   providedIn: 'root',
@@ -22,10 +21,13 @@ export class ServiceService {
   }
 
   getAll(): Observable<ResponseModel<Service>> {
-    return this.httpClient.get<ResponseModel<Service>>(apiUrl + "Service")
+    return this.httpClient.get<ResponseModel<Service>>(`${apiUrl}Service`)
   }
-  getAllResources(sourceId: number): Observable<Resource[]> {
-    return this.httpClient.get<Resource[]>(apiUrl + 'resource')
+  getAllById(id : number): Observable<ResponseModel<Service>> {
+    return this.httpClient.get<ResponseModel<Service>>(`${apiUrl}Service?Id=${id}`)
   }
+  // getAllResources(sourceId: number): Observable<Resource[]> {
+  //   return this.httpClient.get<Resource[]>(apiUrl + 'resource')
+  // }
 
 }

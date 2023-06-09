@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: "service", loadChildren: () => import("./Components/service/service.module").then(m => m.ServiceModule) },
   { path: "resource", loadChildren: () => import("./Components/resource/resource.module").then(m => m.ResourceModule) },
   { path: "booking", loadChildren: () => import("./Components/booking/booking.module").then(m => m.BookingModule) },
-  // { path: "rooms", loadChildren: () => import("./Components/room-resource/room-resource.module").then(m => m.RoomResourceModule) , canActivate: [AuthgaurdsGuard]  },
+  { path: "rooms", loadChildren: () => import("./Components/room-resource/room-resource.module").then(m => m.RoomResourceModule) , canActivate: [AuthgaurdsGuard]  },
 
   //Login route
   { path: 'login', component: LoginComponent },
@@ -23,7 +23,7 @@ const routes: Routes = [
   //shared component
   { path: "aboutUs", component: AboutUsComponent },
   { path: "contactUs", component: ContactUsComponent },
-
+  
 ];
 
 
