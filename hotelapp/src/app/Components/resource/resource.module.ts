@@ -5,11 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { ResourceRoutingModule } from './resource-routing.module';
 import { ResourceListComponent } from './resource-list/resource-list.component';
 import { RouterModule } from '@angular/router';
+import { ResourceDetailsComponent } from './resource-details/resource-details.component';
+
 
 
 @NgModule({
   declarations: [
-    ResourceListComponent
+    ResourceListComponent,
+    ResourceDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ResourceData } from 'src/app/Models/ResourceData';
+import { Resource } from 'src/app/Models/Resource';
 import { ResourceService } from 'src/app/Services/resource.service';
 
 @Component({
@@ -8,9 +8,10 @@ import { ResourceService } from 'src/app/Services/resource.service';
   styleUrls: ['./resource-list.component.css']
 })
 export class ResourceListComponent {
-  data: ResourceData []=[];
-  constructor(private resourceService : ResourceService){}
+  Resources: Resource[] = [];
+  constructor(private resourceService: ResourceService) { }
 
-  ngOnInit(){
+  ngOnInit() {
+    this.resourceService.GetAllMinified().subscribe(result => this.Resources = result.data)
   }
 }

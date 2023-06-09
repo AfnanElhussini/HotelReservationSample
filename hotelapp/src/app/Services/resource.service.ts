@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ResponseModel } from '../Models/ResponseModel';
 import { Room } from '../Models/Room';
 import { apiUrl } from '../environments/environment';
+import { Resource } from '../Models/Resource';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,26 @@ export class ResourceService {
 
   constructor(private http: HttpClient) { }
 
+  GetAllMinified(): Observable<ResponseModel<Resource>> {
+    return this.http.get<ResponseModel<Resource>>(apiUrl + "Resource")
+  }
+
+  //Fixed Backend
   GetResourcesByResouceType(ResourceTypeId: number): Observable<ResponseModel<Room>> {
     return this.http.get<ResponseModel<Room>>(apiUrl + "ResourceData/GetResouceData/" + ResourceTypeId)
   }
+
+  GetResourceDataById(ResourceTypeId: number): Observable<ResponseModel<Room>> {
+    return this.http.get<ResponseModel<Room>>(apiUrl + "ResourceData/Resource/" + ResourceTypeId)
+  }
+
+  //Fixed Backend
   GetResouceById(id: number): Observable<ResponseModel<Room>> {
     return this.http.get<ResponseModel<Room>>(apiUrl + "Resource/" + id)
   }
-  GetRoomScheduleByResouceId(id: number): Observable<ResponseModel<Room>> {
+
+  //Fixed Backend
+  GetRoomScheduleById(id: number): Observable<ResponseModel<Room>> {
     return this.http.get<ResponseModel<Room>>(apiUrl + "Schedule/" + id)
   }
 

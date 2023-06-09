@@ -3,20 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { RoomResourceModule } from './Components/room-resource/room-resource.module';
 import { ResourceModule } from './Components/resource/resource.module';
 import { AccountModule } from './account/account.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RoomResourceModule,
     AccountModule,
     ResourceModule,
     ReactiveFormsModule,
@@ -30,8 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       preventDuplicates: true,
       closeButton: true,
       progressBar: true,
-
     }),
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent],
