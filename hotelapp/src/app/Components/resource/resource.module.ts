@@ -6,6 +6,7 @@ import { ResourceRoutingModule } from './resource-routing.module';
 import { ResourceListComponent } from './resource-list/resource-list.component';
 import { RouterModule } from '@angular/router';
 import { ResourceDetailsComponent } from './resource-details/resource-details.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 
@@ -15,6 +16,7 @@ import { ResourceDetailsComponent } from './resource-details/resource-details.co
     ResourceDetailsComponent
   ],
   imports: [
+    SlickCarouselModule,
     CommonModule,
     FormsModule,
     ResourceRoutingModule

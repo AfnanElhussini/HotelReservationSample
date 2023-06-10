@@ -6,14 +6,14 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, catchError, retry, throwError } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class RetryInterceptor implements HttpInterceptor {
 
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    console.log("retry");
     return next.handle(req).pipe(
       retry(2),
       catchError((error: HttpErrorResponse) => {
@@ -24,11 +24,12 @@ export class RetryInterceptor implements HttpInterceptor {
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     if (error.status === 0) {
-      console.log('An error occurred:', error.error);
+      this.toastr.error("Please try again later", "Service is under maintenance");
+      // console.log('An error occurred:', error.error);
     } else {
-      console.error(`Backend returned code ${error.status}, body was:`, error.error);
+      this.toastr.error(error.message, `Error Code ${error.status}`);
+      // console.error(`Backend returned code ${error.status}, body was:`, error.error);
     }
-
     return throwError(() => new Error('Something bad happened. Please try again later.'));
   }
 

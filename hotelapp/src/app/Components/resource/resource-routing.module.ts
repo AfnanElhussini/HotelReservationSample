@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: "", component: ResourceListComponent, pathMatch: "full"
   },
-  { path: ":id", component: ResourceDetailsComponent }
+  { path: "details/:id", component: ResourceDetailsComponent }
 ];
 
 @NgModule({

@@ -8,8 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { ResourceModule } from './Components/resource/resource.module';
 import { AccountModule } from './account/account.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { RetryInterceptor } from './shared/interceptors/retry.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -33,7 +32,7 @@ import { RouterModule } from '@angular/router';
       closeButton: true,
       progressBar: true,
     }),
-    RouterModule
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
