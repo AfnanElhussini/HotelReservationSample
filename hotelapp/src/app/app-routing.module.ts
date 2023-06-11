@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './shared/components/home/home.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegistrationComponent } from './account/registration/registration.component';
+import { ForgetPasswordComponent } from './account/forget-password/forget-password.component';
 import { AboutUsComponent } from './shared/components/about-us/about-us.component';
 import { ContactUsComponent } from './shared/components/contact-us/contact-us.component';
 import { AuthgaurdsGuard } from './Gaurds/authgaurds.guard';
@@ -19,7 +20,7 @@ const routes: Routes = [
   //Login route
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-
+  {path:'forgetPassword',component:ForgetPasswordComponent},
   //shared component
   { path: "aboutUs", component: AboutUsComponent },
   { path: "contactUs", component: ContactUsComponent },
