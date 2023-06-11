@@ -8,12 +8,12 @@ import { ServiceService } from 'src/app/Services/service.service';
 })
 export class ServiceListComponent {
   services: Service[] = [];
-
   constructor(private serviceService: ServiceService) {
   }
   ngOnInit() {
-    this.serviceService.getAll().subscribe((res) =>
-      this.services = res.data
-    )
+    this.serviceService.getAll().subscribe((res) => {
+      console.log(res.data);
+      this.services = res.data;
+    })
   }
 }
