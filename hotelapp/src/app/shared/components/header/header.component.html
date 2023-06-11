@@ -1,137 +1,121 @@
  <!-- Offcanvas Menu Section Begin -->
- <div  [class]="toggleNav() ? 'offcanvas-menu-overlay' : 'offcanvas-menu-overlay active' " (click)="toggleNav()" ></div>
- <div class="canvas-open" (click)="toggleNav()">
-     <i class="icon_menu"></i>
- </div>
- <div
-   [class]="toggleNav() ? 'offcanvas-menu-wrapper show-offcanvas-menu-wrapper' : 'offcanvas-menu-wrapper'">
-     <div class="canvas-close" (click)="toggleNav()">
-         <i class="icon_close"></i>
-     </div>
-     <div class="search-icon  search-switch">
-         <i class="icon_search"></i>
-     </div>
-     <div class="header-configure-area">
-         <div class="language-option">
-             <img src="../../../../assets/img/flag.jpg" alt="">
-             <span>EN <i class="fa fa-angle-down"></i></span>
-             <div class="flag-dropdown">
-                 <ul>
-                     <li><a href="#">Zi</a></li>
-                     <li><a href="#">Fr</a></li>
-                 </ul>
-             </div>
-         </div>
-     </div>
-     <nav class="mainmenu mobile-menu">
-         <ul>
-             <li class="active"><a href="./index.html">Home</a></li>
-             <li><a routerLink="/rooms">Rooms</a></li>
-             <li><a routerLink="/aboutUs">About Us</a></li>
-             <li><a href="./pages.html">Pages</a>
-                 <ul class="dropdown">
-                     <li><a href="./room-details.html">Room Details</a></li>
-                     <li><a href="#">Deluxe Room</a></li>
-                     <li><a href="#">Family Room</a></li>
-                     <li><a href="#">Premium Room</a></li>
-                 </ul>
-             </li>
-             <li><a href="./blog.html">News</a></li>
-             <li><a routerLink="/cantactUs">Contact</a></li>
-            <li> <a routerLink="/login"> Login</a></li>
-            <li><a routerLink="/register">Register</a></li>
+<div
+  [class]="toggleNav() ? 'offcanvas-menu-overlay' : 'offcanvas-menu-overlay active' "
+  (click)="toggleNav()"></div>
+<div class="canvas-open" (click)="toggleNav()">
+  <i class="icon_menu"></i>
+</div>
+<div
+  [class]="toggleNav() ? 'offcanvas-menu-wrapper show-offcanvas-menu-wrapper' : 'offcanvas-menu-wrapper'">
+  <div class="canvas-close" (click)="toggleNav()">
+    <i class="icon_close"></i>
+  </div>
+  <div class="search-icon  search-switch">
+    <i class="icon_search"></i>
+  </div>
+  <div class="header-configure-area">
+    <div class="language-option">
+      <img src="../../../../assets/img/flag.jpg" alt>
+      <span>EN <i class="fa fa-angle-down"></i></span>
+      <div class="flag-dropdown">
+        <ul>
+          <li><a href="#">Zi</a></li>
+          <li><a href="#">Fr</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <nav class="mainmenu mobile-menu">
+    <ul>
+      <li class="active"><a routerLink="/">Home</a></li>
+      <li><a routerLink="/rooms">Rooms</a></li>
+      <li><a routerLink="/about">About</a></li>
+      <li><a routerLink="/cantact">Contact</a></li>
+      <li> <a routerLink="/login"> Login</a></li>
+      <li><a routerLink="/register">Register</a></li>
 
-         </ul>
-     </nav>
-     <div id="mobile-menu-wrap"></div>
-     <div class="top-social">
-         <a href="#"><i class="fa fa-facebook"></i></a>
-         <a href="#"><i class="fa fa-twitter"></i></a>
-         <a href="#"><i class="fa fa-tripadvisor"></i></a>
-         <a href="#"><i class="fa fa-instagram"></i></a>
-     </div>
-     <ul class="top-widget">
-         <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-         <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
-     </ul>
- </div>
- <!-- Offcanvas Menu Section End -->
+    </ul>
+  </nav>
+  <div id="mobile-menu-wrap"></div>
+  <div class="top-social">
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-tripadvisor"></i></a>
+    <a href="#"><i class="fa fa-instagram"></i></a>
+  </div>
+  <ul class="top-widget">
+    <li><i class="fa fa-phone"></i> (12) 345 67890</li>
+    <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
+  </ul>
+</div>
+<!-- Offcanvas Menu Section End -->
 
 <header class="header-section">
-    <div class="top-nav">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <ul class="tn-left">
-                        <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-                        <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <div class="tn-right">
-                        <div class="top-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-tripadvisor"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                        </div>
-                        <a href="/booking" class="bk-btn">Booking Now</a>
-                        <div class="language-option">
-                            <img src="../../../../assets/img/flag.jpg" alt="">
-                            <span>EN <i class="fa fa-angle-down"></i></span>
-                            <div class="flag-dropdown">
-                                <ul>
-                                    <li><a href="#">Zi</a></li>
-                                    <li><a href="#">Fr</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="top-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <ul class="tn-left">
+            <li><i class="fa fa-phone"></i> (12) 345 67890</li>
+            <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
+          </ul>
         </div>
+        <div class="col-lg-6">
+          <div class="tn-right">
+            <div class="top-social">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-tripadvisor"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+            </div>
+            <a href="/booking" class="bk-btn">Booking Now</a>
+            <div class="language-option">
+              <img src="../../../../assets/img/flag.jpg" alt>
+              <span>EN <i class="fa fa-angle-down"></i></span>
+              <div class="flag-dropdown">
+                <ul>
+                  <li><a href="#">Zi</a></li>
+                  <li><a href="#">Fr</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="menu-item">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-1">
-                    <div class="logo">
-                        <a href="./index.html">
-                            <img src="/assets/img/logo.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-11">
-                    <div class="nav-menu">
-                        <nav class="mainmenu">
-                            <ul>
-                                <li class="active"><a class="text-decoration-none" href="./index.html">Home</a></li>
-                                <li><a class="text-decoration-none" href="/rooms">Rooms</a></li>
-                                <li><a class="text-decoration-none" href="/aboutUs">About Us</a></li>
-                                <li><a class="text-decoration-none"href="/contactUs">Contact</a></li>
-                                <li><a class="text-decoration-none"href="/service">Our Service</a></li>
+  </div>
+  <div class="menu-item">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-1">
+          <div class="logo">
+            <a routerLink="/">
+              <img src="/assets/img/logo.png" alt>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-11">
+          <div class="nav-menu">
+            <nav class="mainmenu">
+              <ul>
+                <li class="active"><a class="text-decoration-none"
+                    routerLink="/">Home</a></li>
+                <!-- <li><a class="text-decoration-none" routerLink="rooms">Rooms</a></li> -->
+                <li><a class="text-decoration-none" routerLink="about">About</a></li>
+                <li><a class="text-decoration-none" routerLink="contact">Contact</a></li>
+                <!-- <li><a class="text-decoration-none"href="/service">Our Service</a></li> -->
 
-                                <li class="nav-item dropdown">
-                                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Availabile Resources
-                                  </a>
-                                  <ul class="dropdown-menu">
-                                    <li *ngFor="let rt of resourceTypes"><a class="dropdown-item" routerLink="resource/{{rt.id}}" routerLinkActive="router-link-active"  routerLinkActive="router-link-active" >{{rt.name}}</a></li>
-                                  </ul>
-                                </li>
-
-                                <li *ngIf="!this.checkIfLoggedIn()" > <a class="text-decoration-none" href="/login"> Login</a></li>
-                                <li *ngIf="!this.checkIfLoggedIn()"><a class="text-decoration-none" href="/register">Register</a></li>
-                                <li *ngIf="this.checkIfLoggedIn()"><a class="text-decoration-none" 
-                                (click)="logout()" href="/login">Logout</a></li>
-                            </ul>
-                        </nav>
-                        <!-- <div class="nav-right search-switch">
+                <!-- <li> <a class="text-decoration-none" href="/resourcetypes">Resource Types</a></li> -->
+                <li> <a class="text-decoration-none" routerLink="login"> Login</a></li>
+                <li><a class="text-decoration-none" routerLink="register">Register</a></li>
+              </ul>
+            </nav>
+            <!-- <div class="nav-right search-switch">
                             <i class="icon_search"></i>
                         </div> -->
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </header>

@@ -1,0 +1,12 @@
+.slick-slide {
+  margin: 0 10px;
+}
+
+.cardcontent .fw-semibold{
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+
+.slick-list{
+  min-height: 448px !important;
+}

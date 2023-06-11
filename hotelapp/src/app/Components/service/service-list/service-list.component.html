@@ -1,8 +1,9 @@
 
-<!-- About Us Page Section Begin -->
+<!-- About Page Section Begin -->
 <section class="aboutus-page-section spad">
     <div class="container">
-        <div class="about-page-text">
+
+        <!-- <div class="about-page-text">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="ap-title">
@@ -21,33 +22,19 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> -->
+
         <div class="about-page-services">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="ap-service-item set-bg" style="background-image: url('assets/img/about/about-p1.jpg');">
-                        <div class="api-text">
-                            <h3>Restaurants Services</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
+                <a *ngFor="let service of services" routerLink="/resource/{{service.id}}" class="col-md-4">
                     <div class="ap-service-item set-bg" style="background-image: url('assets/img/about/about-p2.jpg');">
-                        <!-- <img src="../../../../assets/img/about/about-p2.jpg" alt=""> -->
                         <div class="api-text">
-                            <h3>Travel & Camping</h3>
+                            <h3>{{service.name}}</h3>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="ap-service-item set-bg" style="background-image: url('assets/img/about/about-p3.jpg');">
-                        <div class="api-text">
-                            <h3>Event & Party</h3>
-                        </div>
-                    </div>
-                </div>
+                  </a>
             </div>
         </div>
     </div>
 </section>
-<!-- About Us Page Section End -->
+<!-- About Page Section End -->

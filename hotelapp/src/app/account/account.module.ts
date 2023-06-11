@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    RouterModule
   ]
 })
 export class AccountModule { }

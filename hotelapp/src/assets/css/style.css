@@ -643,7 +643,7 @@ ul, ol {
 	height: 100%;
 }
 /*---------------------
-  About US
+  About
 -----------------------*/
 
 .about-text {
@@ -719,7 +719,7 @@ ul, ol {
 	transition: all 0.3s;
 }
 /*------------------------
-  Home Page Room Section 
+  Home Page Room Section
 -------------------------*/
 
 .hp-room-items {
@@ -1016,7 +1016,7 @@ ul, ol {
 	color: #aaaab3;
 }
 /*------------------------
-  About Us Page Section
+  About Page Section
 -------------------------*/
 
 .aboutus-page-section {
@@ -1162,13 +1162,13 @@ ul, ol {
 .room-item {
 	margin-bottom: 30px;
 }
-.room-item img {
+/* .room-item img {
 	min-width: 100%;
-}
+} */
 .room-item .ri-text {
 	border: 1px solid #ebebeb;
 	border-top: none;
-	padding: 24px 24px 30px 28px;
+	padding: 10px 24px 10px 28px;
 }
 .room-item .ri-text h4 {
 	color: #19191a;
