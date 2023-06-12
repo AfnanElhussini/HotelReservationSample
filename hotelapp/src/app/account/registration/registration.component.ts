@@ -184,15 +184,10 @@ export class RegistrationComponent implements OnInit {
         })
           .then((res) => {
             if (res.status === 200) {
-              Swal.fire({
-                title: 'Registration Successful',
-                icon: 'success',
-                showCancelButton: false,
-                confirmButtonText: 'Login',
-              }).then((result) => {
-                this.router.navigate(['/login']);
-              });
-
+              // show toast from ngx-toastr
+              this.toastr.success('Registration Successful', 'Success');
+              this.router.navigate(['/login']);
+             
               return;
             } else if (res.status === 400) {
               return res.json().then((data) => {
@@ -204,7 +199,9 @@ export class RegistrationComponent implements OnInit {
                 // field not valid
                 else if (data[0].description) {
                   // show toast from ngx-toastr
-                  this.toastr.error(data[0].description, 'Registration Failed');
+                  this.toastr.error(data[0].description, 'Registration Failed',{
+
+                  });
                 } else {
                   this.fixedErrorToast();
                 }

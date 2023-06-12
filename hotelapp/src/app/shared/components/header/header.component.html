@@ -1,21 +1,29 @@
- <!-- Offcanvas Menu Section Begin -->
+<!-- Offcanvas Menu Section Begin -->
 <div
-  [class]="toggleNav() ? 'offcanvas-menu-overlay' : 'offcanvas-menu-overlay active' "
-  (click)="toggleNav()"></div>
+  [class]="
+    toggleNav() ? 'offcanvas-menu-overlay' : 'offcanvas-menu-overlay active'
+  "
+  (click)="toggleNav()"
+></div>
 <div class="canvas-open" (click)="toggleNav()">
   <i class="icon_menu"></i>
 </div>
 <div
-  [class]="toggleNav() ? 'offcanvas-menu-wrapper show-offcanvas-menu-wrapper' : 'offcanvas-menu-wrapper'">
+  [class]="
+    toggleNav()
+      ? 'offcanvas-menu-wrapper show-offcanvas-menu-wrapper'
+      : 'offcanvas-menu-wrapper'
+  "
+>
   <div class="canvas-close" (click)="toggleNav()">
     <i class="icon_close"></i>
   </div>
-  <div class="search-icon  search-switch">
+  <div class="search-icon search-switch">
     <i class="icon_search"></i>
   </div>
   <div class="header-configure-area">
     <div class="language-option">
-      <img src="../../../../assets/img/flag.jpg" alt>
+      <img src="../../../../assets/img/flag.jpg" alt />
       <span>EN <i class="fa fa-angle-down"></i></span>
       <div class="flag-dropdown">
         <ul>
@@ -31,9 +39,8 @@
       <li><a routerLink="/rooms">Rooms</a></li>
       <li><a routerLink="/about">About</a></li>
       <li><a routerLink="/cantact">Contact</a></li>
-      <li> <a routerLink="/login"> Login</a></li>
+      <li><a routerLink="/login"> Login</a></li>
       <li><a routerLink="/register">Register</a></li>
-
     </ul>
   </nav>
   <div id="mobile-menu-wrap"></div>
@@ -70,7 +77,7 @@
             </div>
             <a href="/booking" class="bk-btn">Booking Now</a>
             <div class="language-option">
-              <img src="../../../../assets/img/flag.jpg" alt>
+              <img src="../../../../assets/img/flag.jpg" alt />
               <span>EN <i class="fa fa-angle-down"></i></span>
               <div class="flag-dropdown">
                 <ul>
@@ -90,7 +97,7 @@
         <div class="col-lg-1">
           <div class="logo">
             <a routerLink="/">
-              <img src="/assets/img/logo.png" alt>
+              <img src="/assets/img/logo.png" alt />
             </a>
           </div>
         </div>
@@ -98,16 +105,32 @@
           <div class="nav-menu">
             <nav class="mainmenu">
               <ul>
-                <li class="active"><a class="text-decoration-none"
-                    routerLink="/">Home</a></li>
+                <li class="active">
+                  <a class="text-decoration-none" routerLink="/">Home</a>
+                </li>
                 <!-- <li><a class="text-decoration-none" routerLink="rooms">Rooms</a></li> -->
-                <li><a class="text-decoration-none" routerLink="about">About</a></li>
-                <li><a class="text-decoration-none" routerLink="contact">Contact</a></li>
+                <li>
+                  <a class="text-decoration-none" routerLink="about">About</a>
+                </li>
+                <li>
+                  <a class="text-decoration-none" routerLink="contact"
+                    >Contact</a
+                  >
+                </li>
                 <!-- <li><a class="text-decoration-none"href="/service">Our Service</a></li> -->
 
                 <!-- <li> <a class="text-decoration-none" href="/resourcetypes">Resource Types</a></li> -->
-                <li> <a class="text-decoration-none" routerLink="login"> Login</a></li>
-                <li><a class="text-decoration-none" routerLink="register">Register</a></li>
+                <li *ngIf="!checkIfLoggedIn()">
+                  <a class="text-decoration-none" routerLink="login"> Login</a>
+                </li>
+                <li *ngIf="!checkIfLoggedIn()">
+                  <a class="text-decoration-none" routerLink="register"
+                    >Register</a
+                  >
+                </li>
+                <li *ngIf="checkIfLoggedIn()">
+                  <a class="text-decoration-none"  (click)="logout()"> Logout</a>
+                </li>
               </ul>
             </nav>
             <!-- <div class="nav-right search-switch">

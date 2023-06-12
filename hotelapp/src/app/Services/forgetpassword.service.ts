@@ -17,5 +17,7 @@ export class ForgetpasswordService {
   public forgetPassword(email: string): Observable<any> {
   const url = `https://localhost:7158/api/Account/ForgetPassword?Email=${(email)}`;
     return this.http.post<any>(url, email);
+   
+    
   }
 }
