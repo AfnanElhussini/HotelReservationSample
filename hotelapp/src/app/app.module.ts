@@ -29,6 +29,7 @@ import { RouterModule } from '@angular/router';
       preventDuplicates: true,
       closeButton: true,
       progressBar: true,
+      disableTimeOut: true,
     }),
     RouterModule,
   ],

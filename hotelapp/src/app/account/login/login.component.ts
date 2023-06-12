@@ -80,15 +80,14 @@ export class LoginComponent {
           if (res.status === 200) {
             res.json().then((data) => {
               localStorage.setItem('userBookingAppToken', data.token);
-              Swal.fire({
-                title: 'Login Successful',
-                icon: 'success',
-                showCancelButton: false,
-                confirmButtonText: 'Go to Home Page',
-              }).then((result) => {
-                this.router.navigate(['/']);
-              });
+              // show toast from ngx-toastr
+              this.toastr.success('Login Successful', 'Welcome');
+             setTimeout(() => {
+              this.router.navigate(['/']);
+             }, 3000);
             });
+
+
             return;
           } else if (res.status === 400) {
             return res.json().then((data) => {

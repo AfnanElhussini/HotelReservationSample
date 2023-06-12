@@ -25,13 +25,15 @@ export class ForgetPasswordComponent {
 
   sendConfirmationEmail() {
     console.log(this.forgetPasswordForm.value.email);
+
     this.forgetPasswordService
       .forgetPassword(this.forgetPasswordForm.value.email)
       .subscribe((res) => {
         console.log(res);
+        console.log(this.forgetPasswordForm.value.email);
+
         this.toastr.success('Email sent successfully to ' + this.forgetPasswordForm.value.email);
       })
       this.toastr.success('Email sent successfully to ' + this.forgetPasswordForm.value.email);
-
   }
 }

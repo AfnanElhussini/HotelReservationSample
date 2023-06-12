@@ -20,11 +20,10 @@ export class HeaderComponent {
   checkIfLoggedIn() {
     return localStorage.getItem('userBookingAppToken');
   }
-
-  logout() {
-    localStorage.removeItem('userBookingAppToken');
-  }
-
+ logout(){
+  localStorage.removeItem('userBookingAppToken');
+ }
+ 
   resourceTypes: ResourceType[] = [];
 
   constructor(private resourceTypeService: ResourceTypeService) { }
