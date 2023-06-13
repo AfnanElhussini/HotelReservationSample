@@ -2,3 +2,7 @@
     background-color: azure;
     color: #dfa974;
 }
+
+.service-item{
+  cursor: pointer;
+}

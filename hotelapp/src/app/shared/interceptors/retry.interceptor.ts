@@ -25,12 +25,8 @@ export class RetryInterceptor implements HttpInterceptor {
   private handleError(error: HttpErrorResponse): Observable<never> {
     if (error.status === 0) {
       this.toastr.error("Please try again later", "Service is under maintenance");
-      // console.log('An error occurred:', error.error);
     } else {
-     console.log('An error occurred:', error.error);
-      
-      this.toastr.error(error.message, `Error Code ${error.status}`);
-      // console.error(`Backend returned code ${error.status}, body was:`, error.error);
+      this.toastr.error(error.error, `Error Code ${error.status}`);
     }
     return throwError(() => new Error('Something bad happened. Please try again later.'));
   }
