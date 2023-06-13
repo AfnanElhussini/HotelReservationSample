@@ -1,0 +1,30 @@
+.CardField-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  .CardField-input-wrapper label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .CardField-input-wrapper input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .CardField-input-wrapper .StripeElement--focus {
+    border-color: #dfa974;
+    outline: none;
+  }
+  
+  .CardField-input-wrapper .StripeElement--invalid {
+    border-color: #fa755a;
+  }
+  
+  .CardField-input-wrapper .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+  }

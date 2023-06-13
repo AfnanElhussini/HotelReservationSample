@@ -11,6 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -32,8 +33,11 @@ import { RouterModule } from '@angular/router';
       disableTimeOut: true,
     }),
     RouterModule,
+    // StripeModule.forRoot('pk_test_51MYW00L4FZm4LCWY9I7ZGZWKErGc3sh3NNOxNxPb69FQ1VtPfCKgRBB7LgVbzLE8jKPAqcUxeVbCEL9FwW14VppJ002IEnoyms'),
+    // NgxStripeModule.forRoot('pk_test_51MYW00L4FZm4LCWY9I7ZGZWKErGc3sh3NNOxNxPb69FQ1VtPfCKgRBB7LgVbzLE8jKPAqcUxeVbCEL9FwW14VppJ002IEnoyms'),
+
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
