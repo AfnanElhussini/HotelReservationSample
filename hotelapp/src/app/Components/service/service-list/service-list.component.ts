@@ -10,14 +10,17 @@ import { ServiceDetailsComponent } from '../service-details/service-details.comp
 })
 export class ServiceListComponent {
   services: Service[] = [];
+
   constructor(private serviceService: ServiceService, private modal: NgbModal) { }
+
   ngOnInit() {
     this.serviceService.getAll().subscribe((res) => {
       this.services = res.data;
     })
   }
+
   openModal(service: Service) {
-    const modelRef = this.modal.open(ServiceDetailsComponent, { centered: true });
+    const modelRef = this.modal.open(ServiceDetailsComponent, { size: "xl", backdropClass: "bgModalBackground", backdrop: true });
     modelRef.componentInstance.service = service;
   }
 }

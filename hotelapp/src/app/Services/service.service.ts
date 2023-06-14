@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { apiUrl } from 'src/app/environments/environment'
 import { ResponseModel } from '../Models/ResponseModel';
+import { ServiceMetadata } from '../Models/service-metadata';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,9 @@ export class ServiceService {
   }
   getAllById(id: number): Observable<ResponseModel<Service>> {
     return this.httpClient.get<ResponseModel<Service>>(`${apiUrl}Service?Id=${id}`)
+  }
+  getMetadataById(id: number): Observable<ResponseModel<ServiceMetadata>> {
+    return this.httpClient.get<ResponseModel<ServiceMetadata>>(`${apiUrl}ServiceMetadata?ServiceId=${1}`)
   }
   // getAllResources(sourceId: number): Observable<Resource[]> {
   //   return this.httpClient.get<Resource[]>(apiUrl + 'resource')

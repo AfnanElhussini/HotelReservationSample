@@ -14,8 +14,8 @@ export class ResourceDetailsComponent implements OnInit {
   constructor(public resourceService: ResourceService, public activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.resourceService.GetResourceDataById(this.activatedRoute.snapshot.params["id"]).subscribe(res =>
-      this.resource = res.data
+    this.resourceService.GetResouceDataById(this.activatedRoute.snapshot.params["id"]).subscribe(res =>
+      this.resource = res.data[0]
     )
   }
 

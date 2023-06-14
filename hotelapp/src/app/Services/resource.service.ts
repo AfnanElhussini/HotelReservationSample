@@ -5,6 +5,8 @@ import { ResponseModel } from '../Models/ResponseModel';
 import { Room } from '../Models/Room';
 import { apiUrl } from '../environments/environment';
 import { Resource } from '../Models/Resource';
+import { ResourceData } from '../Models/ResourceData';
+import { ResponseModelObject } from '../Models/ResponseModelObject';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +20,22 @@ export class ResourceService {
   }
 
   //Fixed Backend
-  GetResourcesByResouceType(ResourceTypeId: number): Observable<ResponseModel<Room>> {
-    return this.http.get<ResponseModel<Room>>(apiUrl + "ResourceData/GetResouceData/" + ResourceTypeId)
+  GetResourcesDataByResouceTypeId(ResourceTypeId: number): Observable<ResponseModel<ResourceData>> {
+    return this.http.get<ResponseModel<ResourceData>>(apiUrl + "ResourceData/Type/" + ResourceTypeId)
   }
 
-  GetResourceDataById(ResourceTypeId: number): Observable<ResponseModel<Room>> {
-    return this.http.get<ResponseModel<Room>>(apiUrl + "ResourceData/Resource/" + ResourceTypeId)
+  GetResouceDataById(id: number): Observable<ResponseModel<ResourceData>> {
+    return this.http.get<ResponseModel<ResourceData>>(apiUrl + "Resource/" + id)
+  }
+
+
+  GetResourcesByResouceTypeId(ResourceTypeId: number): Observable<ResponseModel<Resource>> {
+    return this.http.get<ResponseModel<Resource>>(apiUrl + "Resource/ResourceType/" + ResourceTypeId)
   }
 
   //Fixed Backend
-  GetResouceById(id: number): Observable<ResponseModel<Room>> {
-    return this.http.get<ResponseModel<Room>>(apiUrl + "Resource/" + id)
+  GetResouceById(id: number): Observable<ResponseModel<Resource>> {
+    return this.http.get<ResponseModel<Resource>>(apiUrl + "Resource/" + id)
   }
 
   //Fixed Backend
