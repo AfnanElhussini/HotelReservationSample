@@ -23,6 +23,7 @@
     "@stripe/stripe-js": "^1.54.0",
     "bootstrap": "^5.2.3",
     "jquery": "^3.7.0",
+    "ngx-paypal": "^11.0.0",
     "ngx-toastr": "^16.2.0",
     "rxjs": "~7.8.0",
     "stripe-angular": "^1.9.3",

@@ -14,14 +14,10 @@ export class ResetPasswordComponent {
     private resetPasswordService: ResetPasswordService
   ) {
     this.resetPasswordForm = new FormGroup({
-      
       Token: new FormControl('', {
-      
         validators: [Validators.required],
       }),
       Email: new FormControl('', {
-        
-
         validators: [
           Validators.required,
           Validators.pattern(
@@ -30,32 +26,51 @@ export class ResetPasswordComponent {
         ],
       }),
       Password: new FormControl('', {
-     
         validators: [Validators.required],
       }),
       ConfirmedPassword: new FormControl('', {
-  
         validators: [Validators.required],
       }),
     });
   }
 
-  resetPassword = () => {
-    const data = {
-      Token: this.resetPasswordForm.value.Token,
-      Email: this.resetPasswordForm.value.Email,
-      Password: this.resetPasswordForm.value.Password,
-      ConfirmedPassword: this.resetPasswordForm.value.ConfirmedPassword,
-    };
-    console.log(data);
-    this.resetPasswordService.resetPassword(
-      data.Token,
-      data.Email,
-      data.Password,
-      data.ConfirmedPassword
-    ).subscribe((res) => {
-      debugger;
-      console.log(res);
-    });
-  };
+  // resetPassword() {
+  //   if (this.resetPasswordForm.valid) {
+  //     this.resetPasswordService
+  //       .resetPassword(
+  //         this.resetPasswordForm.value.token,
+  //         this.resetPasswordForm.value.email,
+  //         this.resetPasswordForm.value.password,
+  //         this.resetPasswordForm.value.confirmPassowrd
+  //       )
+  //       .subscribe((response) => {
+  //         console.log(response);
+  //         this.toastr.success('Password Reset Successfully');
+  //       });
+  //   } else {
+  //     console.log(this.resetPasswordForm.status)
+  //     this.toastr.error('Please fill all the required fields');
+  //   }
+  // }
+
+  resetPassword() {
+    if (this.resetPasswordForm.invalid) {
+      this.toastr.error('Please fill in all the required fields.', 'Error');
+      return;
+    }
+
+    // const email = this.resetPasswordForm.get('Email')?.value;
+    // const password = this.resetPasswordForm.get('Password')?.value;
+    const token = JSON.stringify(this.resetPasswordForm.value.Token);
+    const email = JSON.stringify(this.resetPasswordForm.value.Email);
+    const password = JSON.stringify(this.resetPasswordForm.value.Password);
+
+    this.resetPasswordService
+      .resetPassword(token, email, password)
+      .subscribe((response) => {
+        // Handle success response
+        console.log('Password reset successful!', response);
+        this.toastr.success('Password reset successful!');
+      });
+  }
 }

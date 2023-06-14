@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { RouterModule } from '@angular/router';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { PaymentPaypalComponent } from './payment-paypal/payment-paypal.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     RegistrationComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
+    PaymentPaypalComponent,
   ],
   imports: [
     CommonModule,

@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,7 +35,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     // StripeModule.forRoot('pk_test_51MYW00L4FZm4LCWY9I7ZGZWKErGc3sh3NNOxNxPb69FQ1VtPfCKgRBB7LgVbzLE8jKPAqcUxeVbCEL9FwW14VppJ002IEnoyms'),
     // NgxStripeModule.forRoot('pk_test_51MYW00L4FZm4LCWY9I7ZGZWKErGc3sh3NNOxNxPb69FQ1VtPfCKgRBB7LgVbzLE8jKPAqcUxeVbCEL9FwW14VppJ002IEnoyms'),
-
+    NgxPayPalModule
   ],
   providers: [],
   bootstrap: [AppComponent],

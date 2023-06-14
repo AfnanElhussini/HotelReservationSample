@@ -11,37 +11,19 @@ import { Observable, catchError, retry, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class ResetPasswordService {
-  base_url = 'https://localhost:7158/api/Account/ResetPassword';
+  // base_url = 'https://localhost:7158/api/Account/ResetPassword';
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private http: HttpClient) {}
 
-  public resetPassword(
-    token: string,
-    email: string,
-    password: string,
-    confirmPassowrd: string
-  ): Observable<any> {
-    const data = {
-      token,
-      email,
-      password,
-      confirmPassowrd,
-    };
+  resetPassword(token: string, email: string, password: string): Observable<any> {
+    const url = 'https://localhost:7158/api/Account/ResetPassword';
 
-    return this.http
-      .post<any>(this.base_url, data)
-
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          if (error.status === 400) {
-            // Handle the 404 response here
-            console.log('Not found');
-          } else {
-            // Handle other error responses
-            console.error(error);
-          }
-          return throwError('Something went wrong');
-        })
-      );
-    console.log(data);
+    const formData = new FormData();
+    formData.append('Token', token);
+    formData.append('Email', email);
+    formData.append('Password', password);
+    formData.append('ConfirmedPassword', password);
+    console.log(formData.get('Token'));
+    return this.http.post(url, formData);
   }
 }
