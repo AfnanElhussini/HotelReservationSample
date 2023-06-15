@@ -1,22 +1,20 @@
 <div
-  class="gap-3 d-flex justify-content-center flex-column align-items-center my-3">
+  class="d-flex gap-4 justify-content-center align-items-center">
 
-  <div class="d-flex align-items-center">
+  <div class="d-flex flex-column gap-3 align-items-center col-6">
 
-    <div class="card col-md-6 col-12">
-      <img
-        src="../../../../assets/img/services/5db14163210000ae2534ae1c.jpeg">
-      <div class="card__content">
-        <div class="card__title">{{service.name}}</div>
-        <p class="card__text">{{service.description}} </p>
-      </div>
-    </div>
+    <img class="rounded-2"
+      src="../../../../assets/img/services/5db14163210000ae2534ae1c.jpeg">
 
-    <div class="d-flex flex-column gap-3 offset-1 col-md-4 col-12">
+    <div class="col-12">
 
       <div class="card">
         <div class="card-body">
-          <div class="table-responsive">
+          <div>
+            <div class="card__title">{{service.name}}</div>
+            <p class="card__text">{{service.description}} </p>
+          </div>
+          <!-- <div class="table-responsive">
             <table
               class="table table-hover align-middle text-nowrap">
               <thead>
@@ -37,43 +35,28 @@
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> -->
         </div>
       </div>
 
-      <button class="shadow-none btn btn-primary">Book</button>
+      <button class="mt-2 col-12 shadow-none btn btn-primary">Book</button>
     </div>
 
   </div>
 
-  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
+  <ngx-slick-carousel class="carousel col-6" #slickModal="slick-carousel"
     [config]="slideConfig">
     <img ngxSlickItem
       src="../../../../assets/img/gallery/gallery-1.jpg"
       class="img-fluid" />
     <img ngxSlickItem
-      src="../../../../assets/img/gallery/gallery-1.jpg"
+      src="../../../../assets/img/gallery/gallery-2.jpg"
       class="img-fluid" />
     <img ngxSlickItem
-      src="../../../../assets/img/gallery/gallery-1.jpg"
+      src="../../../../assets/img/gallery/gallery-3.jpg"
       class="img-fluid" />
     <img ngxSlickItem
-      src="../../../../assets/img/gallery/gallery-1.jpg"
-      class="img-fluid" />
-    <img ngxSlickItem
-      src="../../../../assets/img/gallery/gallery-1.jpg"
-      class="img-fluid" />
-    <img ngxSlickItem
-      src="../../../../assets/img/gallery/gallery-1.jpg"
-      class="img-fluid" />
-    <img ngxSlickItem
-      src="../../../../assets/img/gallery/gallery-1.jpg"
-      class="img-fluid" />
-    <img ngxSlickItem
-      src="../../../../assets/img/gallery/gallery-1.jpg"
-      class="img-fluid" />
-    <img ngxSlickItem
-      src="../../../../assets/img/gallery/gallery-1.jpg"
+      src="../../../../assets/img/gallery/gallery-4.jpg"
       class="img-fluid" />
   </ngx-slick-carousel>
 

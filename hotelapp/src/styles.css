@@ -8,8 +8,9 @@ body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
   border: 0;
 }
 
-.bgModalBackground{
-  background-color: rgb(179, 179, 179) !important;
+.blur{
+  filter: blur(3px);
+  pointer-events: none;
 }
 
 .loading-skeleton {

@@ -15,13 +15,13 @@ export class ServiceDetailsComponent implements OnInit {
   slideConfig: any;
   constructor(private serviceService: ServiceService, private resourceService: ResourceService) {
     this.slideConfig = {
-      "slidesToShow": 3,
+      "slidesToShow": 2,
       'arrows': false,
       'mobileFirst': true,
-      'variableWidth': true,
       'focusOnSelect': true,
-      'dots': true,
       'centerMode': true,
+      'vertical': true,
+      'verticalSwiping': true
     }
   }
   ngOnInit() {
