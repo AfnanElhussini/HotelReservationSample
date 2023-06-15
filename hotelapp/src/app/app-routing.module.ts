@@ -9,6 +9,7 @@ import { ConfirmEmailComponent } from './account/confirm-email/confirm-email.com
 import { AboutUsComponent } from './shared/components/about-us/about-us.component';
 import { ContactUsComponent } from './shared/components/contact-us/contact-us.component';
 import { PaymentComponent } from './Components/booking/payment/payment.component';
+import { PaymentPaypalComponent } from './account/payment-paypal/payment-paypal.component';
 import { AuthgaurdsGuard } from './Gaurds/authgaurds.guard';
 
 const routes: Routes = [
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactUsComponent },
 
   { path: 'payment', component: PaymentComponent },
+  { path: 'paymentPaypal', component: PaymentPaypalComponent },
 ];
 
 @NgModule({

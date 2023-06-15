@@ -29,8 +29,8 @@ export class ConfirmEmailComponent {
         (data) => {
           console.log(data);
           this.toastr.success('Email Confirmed Successfully');
-        }
-      );
+        });
+        this.toastr.success('Email Confirmed Successfully');
 
     });
   }

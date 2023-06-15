@@ -18,6 +18,8 @@ import { PaymentComponent } from './payment/payment.component';
     BookingRoutingModule,
     MatButtonModule,
     MatIconModule,
+
+    
   ]
 })
 export class BookingModule { }
