@@ -24,6 +24,6 @@ export class ResetPasswordService {
     formData.append('Password', password);
     formData.append('ConfirmedPassword', password);
     console.log(formData.get('Email'));
-    return this.http.post(url, formData , {this.headers});
+    return this.http.post(url, formData , { headers: this.headers });
   }
 }
