@@ -12,7 +12,7 @@ import { Observable, catchError, retry, throwError } from 'rxjs';
 })
 export class ResetPasswordService {
   // base_url = 'https://localhost:7158/api/Account/ResetPassword';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
   constructor(private http: HttpClient) {}
 
   resetPassword(token: string, email: string, password: string): Observable<any> {
@@ -23,7 +23,7 @@ export class ResetPasswordService {
     formData.append('Email', email);
     formData.append('Password', password);
     formData.append('ConfirmedPassword', password);
-    console.log(formData.get('Token'));
-    return this.http.post(url, formData);
+    console.log(formData.get('Email'));
+    return this.http.post(url, formData , {this.headers});
   }
 }

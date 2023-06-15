@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { PaymentPaypalComponent } from './payment-paypal/payment-paypal.component';
 
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { PaymentPaypalComponent } from './payment-paypal/payment-paypal.componen
     ForgetPasswordComponent,
     ResetPasswordComponent,
     PaymentPaypalComponent,
+    ConfirmEmailComponent,
   ],
   imports: [
     CommonModule,

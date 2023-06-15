@@ -29,7 +29,8 @@ export class RetryInterceptor implements HttpInterceptor {
     } else {
      console.log('An error occurred:', error.error);
       
-      this.toastr.error(error.message, `Error Code ${error.status}`);
+     // ! commented out to avoid error
+      // this.toastr.error(error.message, `Error Code ${error.status}`);
       // console.error(`Backend returned code ${error.status}, body was:`, error.error);
     }
     return throwError(() => new Error('Something bad happened. Please try again later.'));

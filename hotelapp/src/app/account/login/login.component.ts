@@ -79,6 +79,7 @@ export class LoginComponent {
         .then((res) => {
           if (res.status === 200) {
             res.json().then((data) => {
+              
               localStorage.setItem('userBookingAppToken', data.token);
               // show toast from ngx-toastr
               this.toastr.success('Login Successful', 'Welcome');
