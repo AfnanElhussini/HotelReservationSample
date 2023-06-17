@@ -4,8 +4,8 @@
                     <a href="#">
                         <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt>
                     </a>
-                    <h1>{{UserData.firstName}}</h1>
-                    <p><a href="#" >Email</a></p>
+                    <h1>{{UserData.firstName +" "+ UserData.lastName}}</h1>
+                    <p>{{UserData.email }}</p>
                 </div>
                 <ul class="nav nav-pills flex-column">
                     <li class="active" ><a [routerLink]="['info']"> <i class="fa fa-user"></i> Profile</a></li>
