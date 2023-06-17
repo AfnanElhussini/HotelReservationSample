@@ -12,8 +12,8 @@ export class ResourceTypeService {
 
   constructor(private http: HttpClient) { }
 
-  GetAll(): Observable<ResponseModel<ResourceType>> {
-    return this.http.get<ResponseModel<ResourceType>>(apiUrl + "ResourceType")
+  GetAll(): Observable<ResponseModel<ResourceType[]>> {
+    return this.http.get<ResponseModel<ResourceType[]>>(apiUrl + "ResourceType")
   }
   GetResouceTypeById(ResourceTypeId: number): Observable<ResponseModel<ResourceType>> {
     return this.http.get<ResponseModel<ResourceType>>(apiUrl + "ResourceType/" + ResourceTypeId)

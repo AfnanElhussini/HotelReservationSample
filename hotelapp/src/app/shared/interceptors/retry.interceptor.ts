@@ -16,9 +16,9 @@ export class RetryInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     return next.handle(req).pipe(
       retry(2),
-      catchError((error: HttpErrorResponse) => {
-        return this.handleError(error);
-      })
+      // catchError((error: HttpErrorResponse) => {
+      //   return this.handleError(error);
+      // })
     );
   }
 
@@ -27,9 +27,8 @@ export class RetryInterceptor implements HttpInterceptor {
       this.toastr.error("Please try again later", "Service is under maintenance");
       // console.log('An error occurred:', error.error);
     } else {
-     console.log('An error occurred:', error.error);
-      
-      this.toastr.error(error.message, `Error Code ${error.status}`);
+   //  console.log('An error occurred:', error.error);
+      this.toastr.error(error.error.message, `Error Code ${error.status}`);
       // console.error(`Backend returned code ${error.status}, body was:`, error.error);
     }
     return throwError(() => new Error('Something bad happened. Please try again later.'));

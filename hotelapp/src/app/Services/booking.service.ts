@@ -20,8 +20,8 @@ export class BookingService {
   }
 
 
-  getAllBookingItems(): Observable<ResponseModel<BookingItem>> {
-    return this.httpClient.get<ResponseModel<BookingItem>>( apiUrl +`BookingItem`);
+  getAllBookingItems(): Observable<ResponseModel<BookingItem[]>> {
+    return this.httpClient.get<ResponseModel<BookingItem[]>>( apiUrl +`BookingItem`);
   }
 
   // getBookingItemsByFilter(ResourceId : number  ): Observable<ResponseModel<BookingItem>> {

@@ -20,8 +20,8 @@ export class ServiceService {
     }
   }
 
-  getAll(): Observable<ResponseModel<Service>> {
-    return this.httpClient.get<ResponseModel<Service>>(`${apiUrl}Service`)
+  getAll(): Observable<ResponseModel<Service[]>> {
+    return this.httpClient.get<ResponseModel<Service[]>>(`${apiUrl}Service`)
   }
   getAllById(id : number): Observable<ResponseModel<Service>> {
     return this.httpClient.get<ResponseModel<Service>>(`${apiUrl}Service?Id=${id}`)

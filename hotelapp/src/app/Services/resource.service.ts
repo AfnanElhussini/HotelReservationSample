@@ -13,8 +13,8 @@ export class ResourceService {
 
   constructor(private http: HttpClient) { }
 
-  GetAllMinified(): Observable<ResponseModel<Resource>> {
-    return this.http.get<ResponseModel<Resource>>(apiUrl + "Resource")
+  GetAllMinified(): Observable<ResponseModel<Resource[]>> {
+    return this.http.get<ResponseModel<Resource[]>>(apiUrl + "Resource")
   }
 
   //Fixed Backend
