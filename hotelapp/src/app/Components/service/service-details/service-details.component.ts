@@ -20,6 +20,7 @@ export class ServiceDetailsComponent implements OnInit {
       'mobileFirst': true,
       'focusOnSelect': true,
       'centerMode': true,
+      "adaptiveHeight":true,
       'vertical': true,
       'verticalSwiping': true
     }

@@ -25,7 +25,7 @@ export class ServiceListComponent {
 
   openModal(service: Service) {
     this.StylingService.BlurStatusChange(true);
-    const modelRef = this.modal.open(ServiceDetailsComponent, { size: "xl", backdrop: true });
+    const modelRef = this.modal.open(ServiceDetailsComponent, { size: "xl",centered:true, backdrop: true });
     modelRef.componentInstance.service = service;
     modelRef.dismissed.subscribe(() => this.StylingService.BlurStatusChange(false));
   }
