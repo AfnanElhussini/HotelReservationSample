@@ -65,9 +65,8 @@ export class ResetPasswordComponent {
     // const email = JSON.stringify(this.resetPasswordForm.value.Email);
     // const password = (this.resetPasswordForm.value.Password);
     const token = this.resetPasswordForm.value.Token;
-  const email = this.resetPasswordForm.value.Email;
-  const password = this.resetPasswordForm.value.Password;
-
+    const email = this.resetPasswordForm.value.Email;
+    const password = this.resetPasswordForm.value.Password;
 
     this.resetPasswordService
       .resetPassword(token, email, password)
