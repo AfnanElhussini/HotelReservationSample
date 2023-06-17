@@ -10,9 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { AvailableSchedulesComponent } from './Components/schedule/available-schedules/available-schedules.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AvailableSchedulesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
