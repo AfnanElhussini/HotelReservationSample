@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ForgetpasswordService } from 'src/app/Services/forgetpassword.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
@@ -10,7 +10,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ForgetPasswordComponent {
   forgetPasswordForm: FormGroup;
-  constructor(private forgetPasswordService: ForgetpasswordService, private toastr: ToastrService) {
+  constructor(
+    private forgetPasswordService: ForgetpasswordService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
     this.forgetPasswordForm = new FormGroup({
       email: new FormControl('', {
         validators: [
@@ -24,16 +28,29 @@ export class ForgetPasswordComponent {
   }
 
   sendConfirmationEmail() {
-    console.log(this.forgetPasswordForm.value.email);
+    console.log(this.forgetPasswordForm.status);
+    if (this.forgetPasswordForm.status == 'INVALID') {
+      this.toastr.error('Please enter a valid email address');
+      return;
+    } else {
+      this.forgetPasswordService
+        .forgetPassword(this.forgetPasswordForm.value.email)
+        .subscribe((res) => {
+          console.log(res);
+          console.log(this.forgetPasswordForm.value.email);
 
-    this.forgetPasswordService
-      .forgetPassword(this.forgetPasswordForm.value.email)
-      .subscribe((res) => {
-        console.log(res);
-        console.log(this.forgetPasswordForm.value.email);
+          this.toastr.success(
+            'Email sent successfully to ' + this.forgetPasswordForm.value.email
+          );
+          this.toastr.info('Redirecting to reset password page');
 
-        this.toastr.success('Email sent successfully to ' + this.forgetPasswordForm.value.email);
-      })
-      this.toastr.success('Email sent successfully to ' + this.forgetPasswordForm.value.email);
+          setTimeout(() => {
+            this.router.navigate(['/resetPassword']);
+          }, 2000);
+        });
+      this.toastr.success(
+        'Email sent successfully to ' + this.forgetPasswordForm.value.email
+      );
+    }
   }
 }

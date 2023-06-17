@@ -8,6 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { RouterModule } from '@angular/router';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { PaymentPaypalComponent } from './payment-paypal/payment-paypal.component';
+
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
 
 @NgModule({
@@ -15,6 +19,9 @@ import { RouterModule } from '@angular/router';
     LoginComponent,
     RegistrationComponent,
     ForgetPasswordComponent,
+    ResetPasswordComponent,
+    PaymentPaypalComponent,
+    ConfirmEmailComponent,
   ],
   imports: [
     CommonModule,

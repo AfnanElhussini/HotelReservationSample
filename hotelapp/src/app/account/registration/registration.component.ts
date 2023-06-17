@@ -9,8 +9,7 @@ import {
 import { User } from 'src/app/Models/user';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmedValidator } from 'src/app/shared/customHooks/confirmed.validator';
-import Swal from 'sweetalert2';
-
+import { RegisterService } from 'src/app/Services/register.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -22,28 +21,28 @@ export class RegistrationComponent implements OnInit {
   fixedErrorToast() {
     return this.toastr.error('Registration Failed please try again');
   }
-  registerUserFunc(data: object) {
-    console.log(data);
-    fetch('https://localhost:7158/api/Account/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          alert('Registration Successful');
-        } else if (res.status === 400) {
-          console.log(res);
-        } else {
-          console.warn('Registration Failed: ' + res.status);
-        }
-      })
-      .catch((err) => {
-        console.warn('Registration Failed: ' + err);
-      });
-  }
+  // registerUserFunc(data: object) {
+  //   console.log(data);
+  //   fetch('https://localhost:7158/api/Account/register', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         alert('Registration Successful');
+  //       } else if (res.status === 400) {
+  //         console.log(res);
+  //       } else {
+  //         console.warn('Registration Failed: ' + res.status);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.warn('Registration Failed: ' + err);
+  //     });
+  // }
   // checkMatchigPasswords() {
   //   return (
   //     this.userRegisterForm.value['password'] ===
@@ -68,7 +67,11 @@ export class RegistrationComponent implements OnInit {
 
   //   console.log(age, this.olderThan18, year, userYear);
   // }
-  constructor(private router: Router, private toastr: ToastrService) {
+  constructor(
+    private router: Router,
+    private toastr: ToastrService,
+    private registerService: RegisterService
+  ) {
     this.userRegisterForm = new FormGroup({
       firstName: new FormControl('', {
         updateOn: 'submit',
@@ -94,8 +97,10 @@ export class RegistrationComponent implements OnInit {
       email: new FormControl('', {
         updateOn: 'submit',
         validators: [
-          Validators.required, 
-          Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')
+          Validators.required,
+          Validators.pattern(
+            '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$'
+          ),
         ],
       }),
 
@@ -163,62 +168,125 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
+  // onSubmit() {
+  //   if (this.userRegisterForm.invalid) {
+  //     // alert('Please fill all the required fields');ValidationFE()
+  //     this.ValidationFE();
+  //     // return this.userRegisterForm.controls['email'].errors
+  //   } else {
+  //     try {
+  //       this.firstNameFEValidation = false;
+  //       this.lastNameFEValidation = false;
+  //       this.emailFEValidation = false;
+  //       this.userNameFEValidation = false;
+  //       debugger;
+  //       this.registerService
+  //         .register(
+  //           this.userRegisterForm.value['email'],
+  //           this.userRegisterForm.value['firstName'],
+  //           this.userRegisterForm.value['userName'],
+  //           this.userRegisterForm.value['lastName'],
+  //           this.userRegisterForm.value['password']
+  //         )
+  //         .subscribe((res) => {
+  //           this.toastr.success('Registration Successful', 'Success');
+  //           this.toastr.info('Please confirm your email', 'Info');
+  //           setTimeout(() => {
+  //             this.router.navigate(['/confirm-email']);
+  //           }, 2000);
+
+  //           if (res.status === 400) {
+  //             return res.json().then((data: any) => {
+  //               // missing fields
+  //               if (data.errors) {
+  //                 let errors = data.errors;
+  //                 this.missingFeildsErrosObject = errors;
+  //               }
+  //               // field not valid
+  //               else if (data[0].description) {
+  //                 // show toast from ngx-toastr
+  //                 this.toastr.error(data[0].description, 'Registration Failed');
+  //               } else {
+  //                 this.fixedErrorToast();
+  //               }
+  //             });
+  //           }
+  //           return;
+  //         });
+  //     } catch (err) {
+  //       this.fixedErrorToast();
+  //     }
+  //     return;
+  //   }
+  // }
   onSubmit() {
     if (this.userRegisterForm.invalid) {
-      // alert('Please fill all the required fields');ValidationFE()
       this.ValidationFE();
-      // return this.userRegisterForm.controls['email'].errors
     } else {
-      try {
+  
         this.firstNameFEValidation = false;
         this.lastNameFEValidation = false;
         this.emailFEValidation = false;
         this.userNameFEValidation = false;
-        
-        fetch('https://localhost:7158/api/Account/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(this.userRegisterForm.value),
-        })
-          .then((res) => {
-            if (res.status === 200) {
-              // show toast from ngx-toastr
-              this.toastr.success('Registration Successful', 'Success');
-              this.router.navigate(['/login']);
-             
-              return;
-            } else if (res.status === 400) {
-              return res.json().then((data) => {
-                // missing fields
-                if (data.errors) {
-                  let errors = data.errors;
-                  this.missingFeildsErrosObject = errors;
-                }
-                // field not valid
-                else if (data[0].description) {
-                  // show toast from ngx-toastr
-                  this.toastr.error(data[0].description, 'Registration Failed',{
-
-                  });
-                } else {
-                  this.fixedErrorToast();
-                }
-              });
-            } else {
-              throw new Error('Registration Failed');
-            }
-          })
-          .catch((err) => {
-            this.fixedErrorToast();
+        this.registerService
+          .register(
+            this.userRegisterForm.value['email'],
+            this.userRegisterForm.value['firstName'],
+            this.userRegisterForm.value['userName'],
+            this.userRegisterForm.value['lastName'],
+            this.userRegisterForm.value['password']
+          )
+          .subscribe((res) => {
+            console.log(res);
+            
+            this.toastr.success('Registration Successful', 'Success');
+            this.toastr.info('Please confirm your email', 'Info');
+            setTimeout(() => {
+              this.router.navigate(['/confirm-email']);
+            }, 2000);
+          
           });
-      } catch (err) {
-        this.fixedErrorToast();
-      }
-      return;
+      
     }
   }
 
   ngOnInit(): void {}
 }
+// fetch('https://localhost:7158/api/Account/register', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify(this.userRegisterForm.value),
+// })
+//   .then((res) => {
+//     if (res.status === 200) {
+//       // show toast from ngx-toastr
+//       this.toastr.success('Registration Successful', 'Success');
+//       this.router.navigate(['/login']);
+
+//       return;
+//     } else if (res.status === 400) {
+//       return res.json().then((data) => {
+//         // missing fields
+//         if (data.errors) {
+//           let errors = data.errors;
+//           this.missingFeildsErrosObject = errors;
+//         }
+//         // field not valid
+//         else if (data[0].description) {
+//           // show toast from ngx-toastr
+//           this.toastr.error(data[0].description, 'Registration Failed',{
+
+//           });
+//         } else {
+//           this.fixedErrorToast();
+//         }
+//       });
+//     } else {
+//       throw new Error('Registration Failed');
+//     }
+//   })
+//   .catch((err) => {
+//     this.fixedErrorToast();
+//   });
