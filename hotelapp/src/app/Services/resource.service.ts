@@ -25,7 +25,7 @@ export class ResourceService {
   }
 
   GetResouceDataById(id: number): Observable<ResponseModel<ResourceData>> {
-    return this.http.get<ResponseModel<ResourceData>>(apiUrl + "Resource/" + id)
+    return this.http.get<ResponseModel<ResourceData>>(apiUrl + "ResourceData/Resource/" + id)
   }
 
 
@@ -34,8 +34,8 @@ export class ResourceService {
   }
 
   //Fixed Backend
-  GetResouceById(id: number): Observable<ResponseModel<Resource>> {
-    return this.http.get<ResponseModel<Resource>>(apiUrl + "Resource/" + id)
+  GetResouceById(id: number): Observable<ResponseModelObject<Resource>> {
+    return this.http.get<ResponseModelObject<Resource>>(apiUrl + "Resource/" + id)
   }
 
   //Fixed Backend

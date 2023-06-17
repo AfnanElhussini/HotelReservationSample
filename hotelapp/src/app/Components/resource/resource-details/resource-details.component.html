@@ -1,43 +1,26 @@
-<section class="room-details-section spad">
-  <div class="container">
-    <div class="row">
-        <div class="room-details-item d-flex justify-content-center align-items-center">
-          <img src="../../../../assets/img/about/about-1.jpg" class="img-fluid col-md-7 col-12">
-          <div class="offset-2 rd-text">
-            <div class="rd-title">
-              <div class="rdt-right">
-                <div class="rating">
-                  <i class="icon_star"></i>
-                  <i class="icon_star"></i>
-                  <i class="icon_star"></i>
-                  <i class="icon_star"></i>
-                  <i class="icon_star-half_alt"></i>
-                </div>
-                <a href="#">Booking Now</a>
-              </div>
-            </div>
-            <h2>{{resource.price}}<span>/Pernight</span></h2>
-            <table>
-              <tbody>
-                <tr *ngFor="let attr of resource.attributes">
-                  <td class="r-o">{{attr.name}}</td>
-                  <td>{{attr.value}}</td>
-                </tr>
-              </tbody>
-            </table>
-            <!-- <p class="f-para">{{room?.Description}}
-              search the various sites of our great land, America.</p>
-            <p>The two commonly known recreational vehicle classes are the
-              motorized and towable.
-              Towable rvs are the travel trailers and the fifth wheel. The rv
-              travel trailer or fifth
-              wheel has the attraction of getting towed by a pickup or a car,
-              thus giving the
-              adaptability of possessing transportation for you when you are
-              parked at your campsite.
-            </p> -->
-          </div>
+<div class="container room-details-item d-flex justify-content-center align-items-center gap-5">
+  <img src="../../../../assets/img/about/about-1.jpg" class="img-fluid col-md-4">
+  <div class="rd-text">
+    <div class="rd-title">
+      <div class="rdt-right">
+        <div class="rating">
+          <i class="icon_star"></i>
+          <i class="icon_star"></i>
+          <i class="icon_star"></i>
+          <i class="icon_star"></i>
+          <i class="icon_star-half_alt"></i>
         </div>
+        <a href="#">Booking Now</a>
+      </div>
     </div>
+    <h2>{{resource.price}}<span>/Pernight</span></h2>
+    <table>
+      <tbody>
+        <tr *ngFor="let attr of resource.attributes">
+          <td class="r-o">{{attr.name}}</td>
+          <td>{{attr.value}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</section>
+</div>

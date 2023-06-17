@@ -8,6 +8,10 @@ body { height: 100vh; margin: 0; font-family: "Roboto", "Helvetica Neue", sans-s
   border: 0;
 }
 
+.cursor-pointer{
+  cursor: pointer;
+}
+
 router-outlet{
   display:none;
 }
