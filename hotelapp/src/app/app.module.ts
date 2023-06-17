@@ -14,9 +14,10 @@ import { AvailableSchedulesComponent } from './Components/schedule/available-sch
 import { NgxPayPalModule } from 'ngx-paypal';
 
 // import { NgxStripeModule } from 'ngx-stripe';
-
+import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { SchedulesPopupComponent } from './Components/schedule/schedules-popup/schedules-popup.component';
 @NgModule({
-  declarations: [AppComponent, AvailableSchedulesComponent],
+  declarations: [AppComponent, AvailableSchedulesComponent,SchedulesPopupComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,6 +27,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     FormsModule,
     HttpClientModule,
     SharedModule,
+    NgbDatepicker,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
