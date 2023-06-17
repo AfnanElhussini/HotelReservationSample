@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './shared/components/home/home.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegistrationComponent } from './account/registration/registration.component';
 import { ForgetPasswordComponent } from './account/forget-password/forget-password.component';
@@ -10,14 +9,16 @@ import { AboutUsComponent } from './shared/components/about-us/about-us.componen
 import { ContactUsComponent } from './shared/components/contact-us/contact-us.component';
 import { PaymentComponent } from './Components/booking/payment/payment.component';
 import { PaymentPaypalComponent } from './account/payment-paypal/payment-paypal.component';
-import { AuthgaurdsGuard } from './Gaurds/authgaurds.guard';
+import { ServiceListComponent } from './Components/service/service-list/service-list.component';
+import { ScheduleComponent } from './Components/schedule/schedule.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo:"service", pathMatch: "full", },
+  { path: '', component:ServiceListComponent,pathMatch:"full" },
   { path: "service", loadChildren: () => import("./Components/service/service.module").then(m => m.ServiceModule) },
   { path: "resource", loadChildren: () => import("./Components/resource/resource.module").then(m => m.ResourceModule) },
   { path: "booking", loadChildren: () => import("./Components/booking/booking.module").then(m => m.BookingModule) },
+  { path: "availableschedule/:servicename", component:ScheduleComponent},
 
   //Login route
   { path: 'login', component: LoginComponent },

@@ -1,0 +1,40 @@
+<div class="d-flex container justify-content-center align-items-center">
+  <div class="schedule-check fw-light col-4 gap-3">
+    <div>
+        <label class="">Check In</label>
+        <input class="form-control shadow-none" placeholder="Please select check in date" type="date"[(ngModel)]="fromDate">
+    </div>
+    <div>
+        <label class="">Check Out</label>
+        <input class="form-control shadow-none" placeholder="Please select check out date" type="date"[(ngModel)]="toDate">
+    </div>
+    <button [disabled]="!fromDate ||!toDate" type="button" (click)="searchSchedule()"  class="btn btn-primary">Check Availability</button>
+  </div>
+  <div *ngIf="schedules.length" class="schedule-check col-5 gap-0 offset-1">
+    <h2 class="card-title m-0 ps-1">Available Schedules</h2>
+    <div class="card-text">
+      <div class="table-responsive">
+        <table *ngIf="schedules && schedules.length" class="table">
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>To</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let schedule of schedules">
+              <td>{{ schedule.fromDate | date:'MMM d, y' }}</td>
+              <td>{{ schedule.toDate | date:'MMM d, y' }}</td>
+              <td>
+                <button routerLink="/resource" class="border-1 btn btn-primary">
+                  Get Available Resources
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
+body { height: 100vh; margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
 
 .modal-content{
   background-color: transparent!important;
   border: 0;
+}
+
+router-outlet{
+  display:none;
 }
 
 .blur{

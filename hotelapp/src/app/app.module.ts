@@ -10,14 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { AvailableSchedulesComponent } from './Components/schedule/available-schedules/available-schedules.component';
 import { NgxPayPalModule } from 'ngx-paypal';
-
-// import { NgxStripeModule } from 'ngx-stripe';
 import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
-import { SchedulesPopupComponent } from './Components/schedule/schedules-popup/schedules-popup.component';
+import { ScheduleComponent } from './Components/schedule/schedule.component';
+
 @NgModule({
-  declarations: [AppComponent, AvailableSchedulesComponent,SchedulesPopupComponent],
+  declarations: [AppComponent,ScheduleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

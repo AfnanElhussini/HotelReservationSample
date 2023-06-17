@@ -3,6 +3,8 @@ import { Service } from 'src/app/Models/Service';
 import { ResourceService } from 'src/app/Services/resource.service';
 import { ServiceService } from 'src/app/Services/service.service';
 import { Resource } from 'src/app/Models/Resource';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-service-details',
   templateUrl: './service-details.component.html',
@@ -13,7 +15,7 @@ export class ServiceDetailsComponent implements OnInit {
   serviceResourceTypes: any;
   ServiceResources: Resource[] = []
   slideConfig: any;
-  constructor(private serviceService: ServiceService, private resourceService: ResourceService) {
+  constructor(private serviceService: ServiceService, private resourceService: ResourceService,private activeModal:NgbActiveModal,private router:Router) {
     this.slideConfig = {
       "slidesToShow": 2,
       'arrows': false,
@@ -31,4 +33,10 @@ export class ServiceDetailsComponent implements OnInit {
     )
     this.resourceService.GetResourcesByResouceTypeId(2).subscribe(res => this.ServiceResources = res.data)
   }
+
+  openSchedule(){
+    this.activeModal.dismiss();
+    this.router.navigateByUrl(`availableschedule/${this.service.name}`)
+  }
+
 }
