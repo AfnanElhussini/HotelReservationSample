@@ -13,8 +13,6 @@ export class ScheduleService {
   constructor(private http: HttpClient) { }
 
   getSchedules(fromDate?: Date, toDate?: Date): Observable<ResponseModel<Schedule>> {
-    console.log(fromDate);
-    console.log(toDate);
     const url =`${apiUrl}Schedule/GetSchedules?fromDate=${fromDate}&toDate=${toDate}`;
     return this.http.get<ResponseModel<Schedule>>(url);
   }

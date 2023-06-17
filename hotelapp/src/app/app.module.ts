@@ -11,9 +11,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AvailableSchedulesComponent } from './Components/schedule/available-schedules/available-schedules.component';
-
+import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { SchedulesPopupComponent } from './Components/schedule/schedules-popup/schedules-popup.component';
 @NgModule({
-  declarations: [AppComponent, AvailableSchedulesComponent],
+  declarations: [AppComponent, AvailableSchedulesComponent,SchedulesPopupComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,6 +24,7 @@ import { AvailableSchedulesComponent } from './Components/schedule/available-sch
     FormsModule,
     HttpClientModule,
     SharedModule,
+    NgbDatepicker,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
