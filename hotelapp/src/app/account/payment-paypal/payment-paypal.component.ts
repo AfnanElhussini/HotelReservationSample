@@ -96,7 +96,7 @@ import { ICreateOrderRequest } from "ngx-paypal";
     styleUrls: ['./payment-paypal.component.css'],
   })
 export class PaymentPaypalComponent implements OnInit {
-  totalPrice  = 1;
+  totalPrice  = 100;
 
   @ViewChild('paymentRef', {static: true}) paymentRef!: ElementRef;
 
@@ -105,30 +105,30 @@ export class PaymentPaypalComponent implements OnInit {
 
   constructor() {}
 
-  // ngOnInit() {
-  //   console.log(window.paypal)
-  //   window.paypal.Buttons({
-  //     createOrder: (data : any, actions : any) => {
-  //       return actions.order.create({
-  //         purchase_units: [
-  //           {
-  //             amount: {
-  //               currency_code: 'EUR',
-  //               value: this.totalPrice.toString(),
-  //             },
-  //           },
-  //         ],
-  //       });
-  //     },
-  //     onApprove: async (data : any, actions : any) => {
-  //       const order = await actions.order.capture();
-  //       console.log(order);
-  //     },
-  //     onerror: (err : any) => {
-  //       alert('failed ')
-  //       console.log(err);
-  //     }
-  // }).render(this.paymentRef.nativeElement);
+  ngOnInit() {
+    console.log(window.paypal)
+    window.paypal.Buttons({
+      createOrder: (data : any, actions : any) => {
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                currency_code: 'EUR',
+                value: this.totalPrice.toString(),
+              },
+            },
+          ],
+        });
+      },
+      onApprove: async (data : any, actions : any) => {
+        const order = await actions.order.capture();
+        console.log(order);
+      },
+      onerror: (err : any) => {
+        alert('failed ')
+        console.log(err);
+      }
+  }).render(this.paymentRef.nativeElement);
   
 
   //   // this.payPalConfig = {
@@ -208,63 +208,61 @@ export class PaymentPaypalComponent implements OnInit {
   // back(){
   //   this.showPaypalButtons = false;
   // }
-  amount = 1;
-  ngOnInit(): void {
-    window.paypal.Buttons(
-      {
-        style: {
-          layout: 'horizontal',
-          color: 'blue',
-          shape: 'rect',
-          label: 'paypal',
-        },
-        createOrder: (data: any, actions: any) => {
-          return actions.order.create({
-            intent: 'CAPTURE',
-            payer : { 
-              name : {
-                given_name : 'test',
-                surname : 'test'
-            },
-            address:{
-              address_line_1 : 'test',
-              address_line_2 : 'test',
-              admin_area_2 : 'test',
-              admin_area_1 : 'test',
-              postal_code : 'test',
-              country_code : 'test'
-            },
-            email_address : '',
-            phone : {
-              phone_type : 'MOBILE',
-              phone_number : {
-                national_number : 'test'
-              }
-            }
-          },
-            purchase_units: [
-              {            
-                amount: {
-                  value: this.totalPrice.toString(),
-                  currency_code: 'USD'
-                }
-              }
-            ]
-          });
-        },
-        onApprove: (data: any, actions: any) => {
-          return actions.order.capture().then((details: any) => {
-            console.log(details);
-            if (details.status === 'COMPLETED') {
-            alert('Transaction completed by ' + details.payer.name.given_name);
-            }
-          });
-        },
-        onError: (error: any) => {
-          console.log(error);
-        }
-      }
-    ).render(this.paymentRef.nativeElement);
-  }
+  
+  // TOTAL CART ` 
+  
+  // ngOnInit(): void {
+  //   window.paypal.Buttons(
+  //     {
+       
+  //       createOrder: (data: any, actions: any) => {
+  //         return actions.order.create({
+  //           intent: 'CAPTURE',
+  //           payer : { 
+  //             name : {
+  //               given_name : 'test',
+  //               surname : 'test'
+  //           },
+  //           address:{
+  //             address_line_1 : 'test',
+  //             address_line_2 : 'test',
+  //             admin_area_2 : 'test',
+  //             admin_area_1 : 'test',
+  //             postal_code : 'test',
+  //             country_code : 'test'
+  //           },
+  //           email_address : '',
+  //           phone : {
+  //             phone_type : 'MOBILE',
+  //             phone_number : {
+  //               national_number : 'test'
+  //             }
+  //           }
+  //         },
+  //           purchase_units: [
+  //             {            
+  //               amount: {
+  //                 value: this.totalPrice.toString(),
+  //                 currency_code: 'USD'
+  //               }
+  //             }
+  //           ]
+  //         });
+  //       },
+  //       onApprove: (data: any, actions: any) => {
+  //         return actions.order.capture().then((details: any) => {
+  //           console.log(details);
+  //           if (details.status === 'COMPLETED') {
+  //           alert('Transaction completed by ' + details.payer.name.given_name);
+  //           }
+  //         });
+  //       },
+  //       onError: (error: any) => {
+  //         console.log(error);
+  //       }
+  //     }
+  //   ).render(this.paymentRef.nativeElement);
+  // }
 
+}
 }
