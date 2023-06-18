@@ -41,6 +41,9 @@ export class RetryInterceptor implements HttpInterceptor {
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
+    if(error.status === 200){
+      this.toastr.success('Operation Successful', 'Done');
+    }
     if (error.status === 400) {
       this.toastr.error('Please try again later', error.error[0].description);
 

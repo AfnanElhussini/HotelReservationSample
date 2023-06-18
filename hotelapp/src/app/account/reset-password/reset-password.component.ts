@@ -71,6 +71,8 @@ export class ResetPasswordComponent {
     this.resetPasswordService
       .resetPassword(token, email, password)
       .subscribe((response) => {
+        console.log(response);
+        
         // Handle success response
         console.log('Password reset successful!', response);
         this.toastr.success('Password reset successful!');
